@@ -1,12 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.css";
 import { useAuth } from "../context/AuthContext";
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'; 
 import icono from '../assets/icono.png'; 
 import texto from '../assets/texto.png'; 
+
 const LoginRegister = () => {
   const auth = useAuth();
+  const navigate = useNavigate(); // Usa el hook useNavigate para redireccionar
   const { displayName } = auth.user;
 
   const [isLogin, setIsLogin] = useState(true);
@@ -18,12 +21,23 @@ const LoginRegister = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      const userExists = await auth.checkUserExists(emailRegister);
+      if (userExists) {
+        Swal.fire({
+          icon: 'info',
+          title: 'User Already Exists',
+          text: 'An account with this email already exists. Please log in instead.',
+        });
+        return;
+      }
+
       await auth.register(emailRegister, passwordRegister);
       Swal.fire({
         icon: 'success',
         title: 'Registration Successful',
         text: `Welcome, ${emailRegister}!`,
       });
+      navigate("/acces"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -42,6 +56,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: `Welcome back, ${email}!`,
       });
+      navigate("/acces"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -60,6 +75,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: 'Welcome back with Google!',
       });
+      navigate("/acces"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -69,8 +85,17 @@ const LoginRegister = () => {
     }
   };
 
-  const handleLogout = () => {
-    auth.logout();
+  const handleLogout = async () => {
+    try {
+      await auth.logout();
+      navigate("/"); // Redirige a la página de inicio o login después de cerrar sesión
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Logout Error',
+        text: error.message || 'An error occurred during logout.',
+      });
+    }
   };
 
   return (
@@ -149,7 +174,7 @@ const LoginRegister = () => {
             </div>
             <div className="toggle-panel toggle-right">
               <h1>Welcome to AquaImpact!</h1>
-              <p>Knowlegde is power, water is vital</p>
+              <p>Knowledge is power, water is vital</p>
               <button className="hidden" onClick={() => setIsLogin(false)}>
                 Sign Up
               </button>

@@ -1,12 +1,19 @@
-import FormsFirebase from "./components/login";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import LoginRegister from "./components/login"; // Asegúrate de que el nombre del archivo y componente sean correctos
+import Acces from "./components/acces";
 import { AuthProvider } from "./context/AuthContext";
+
 function App() {
   return (
-    <div>
+    <Router>
       <AuthProvider>
-        <FormsFirebase />
+        <Routes>
+          <Route path="/login" element={<LoginRegister />} />
+          <Route path="/acces" element={<Acces />} />
+          <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
+        </Routes>
       </AuthProvider>
-    </div>
+    </Router>
   );
 }
 
