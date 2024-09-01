@@ -4,7 +4,6 @@ function App() {
   return (
     <div>
       <AuthProvider>
-        <h1>AquaImpact</h1>
         <FormsFirebase />
       </AuthProvider>
     </div>
