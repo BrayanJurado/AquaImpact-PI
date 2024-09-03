@@ -1,6 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import useParticleStore from "./store/use-particle-store.js";
+import useParticleStore from "../store/use-particle-store.js";
 
 
 const Particle = ()=>{
