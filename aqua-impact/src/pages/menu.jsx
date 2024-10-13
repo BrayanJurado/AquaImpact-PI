@@ -2,6 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';  
 import '../assets/styles/swiper-bundle.min.css';               
 import '../assets/styles/Menu.css';
+import { Navbar } from '../components/Navbar';
 
 // Importa los módulos de Swiper para la navegación y paginación
 import { Navigation, Pagination } from 'swiper/modules';    
@@ -15,6 +16,7 @@ import tarjeta3Img from '../assets/images/tarjeta3.png'
 function CardSlider() {
   return (
     <div>
+    <Navbar />
     <section className="containerM">
       <Swiper
         modules={[Navigation, Pagination]}   
