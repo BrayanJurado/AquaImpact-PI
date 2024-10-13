@@ -4,8 +4,7 @@ import "../assets/styles/login.css";
 import { useAuth } from "../context/AuthContext";
 import Swal from 'sweetalert2';
 import { FcGoogle } from 'react-icons/fc'; 
-import icono from '../assets/images/icono.png'; 
-import texto from '../assets/images/texto.png'; 
+import icono from '../assets/images/logofc.png'; 
 
 const LoginRegister = () => {
   const auth = useAuth();
@@ -37,7 +36,7 @@ const LoginRegister = () => {
         title: 'Registration Successful',
         text: `Welcome, ${emailRegister}!`,
       });
-      navigate("/acces"); // Redirige a la interfaz Acces
+      navigate("/menu"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -56,7 +55,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: `Welcome back, ${email}!`,
       });
-      navigate("/acces"); // Redirige a la interfaz Acces
+      navigate("/menu"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -75,7 +74,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: 'Welcome back with Google!',
       });
-      navigate("/acces"); // Redirige a la interfaz Acces
+      navigate("/menu"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -101,8 +100,7 @@ const LoginRegister = () => {
   return (
     <div className="login-container">
       <div className="icon-container">
-        <img src={icono} alt="Icon" className="icon-image" />
-        <img src={texto} alt="Text" className="text-image" />
+      <img src={icono} alt="Project Logo" style={{ height: '45px', marginLeft: '10px' }} />
       </div>
       <div className={`container ${!isLogin ? 'active' : ''}`} id="container">
         {displayName && <h5>Welcome: {displayName}</h5>}

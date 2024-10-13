@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import LoginRegister from "./pages/login"; // Asegúrate de que el nombre del archivo y componente sean correctos
-import Acces from "./pages/acces";
+import LoginRegister from "./pages/login"; 
+import CardSlider from "./pages/menu";
 import { AuthProvider } from "./context/AuthContext";
-
+import "./App.css"
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
           <Route path="/login" element={<LoginRegister />} />
-          <Route path="/acces" element={<Acces />} />
+          <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
         </Routes>
       </AuthProvider>

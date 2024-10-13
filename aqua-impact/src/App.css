@@ -1,0 +1,40 @@
+:root {
+    /*========== Colors ==========*/
+    --first-color: hsl(38, 92%, 58%);
+    --first-color-light: hwb(224 1% 87%);
+    --first-color-alt: hsl(187, 93%, 54%);
+    --second-color: hsl(195, 75%, 52%);
+    --dark-color: hsl(212, 40%, 12%);
+    --white-color: hsl(212, 4%, 95%);
+    --body-color: hsl(210, 83%, 7%);
+    --container-color: hsl(210, 83%, 5%);
+    
+    /*========== Font and typography ==========*/
+    --h2-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+  }
+  
+  /*=============== BASE ===============*/
+  body {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--white-color);
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
