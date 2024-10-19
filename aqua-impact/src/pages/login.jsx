@@ -55,7 +55,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: `Welcome back, ${email}!`,
       });
-      navigate("/menu"); // Redirige a la interfaz Acces
+      navigate("/menu"); 
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -74,7 +74,7 @@ const LoginRegister = () => {
         title: 'Login Successful',
         text: 'Welcome back with Google!',
       });
-      navigate("/menu"); // Redirige a la interfaz Acces
+      navigate("/menu"); 
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -87,7 +87,7 @@ const LoginRegister = () => {
   const handleLogout = async () => {
     try {
       await auth.logout();
-      navigate("/"); // Redirige a la página de inicio o login después de cerrar sesión
+      navigate("/"); 
     } catch (error) {
       Swal.fire({
         icon: 'error',

@@ -2,85 +2,83 @@ import React from 'react';
 import { Navbar } from '../components/Navbar';
 
 function AcidificationSection() {
-  // Definir estilos en un objeto
+  // Definir estilos en los objetos
   const styles = {
     contentContainer: {
       position: 'absolute',
-      top: '50%', // Centrar verticalmente
-      left: '0', // Pegado a la izquierda
-      transform: 'translateY(-50%)', // Ajustar para centrar
-      color: '#fff', // Color del texto
-      textAlign: 'right', // Alinear el texto a la derecha
-      maxWidth: '300px', // Establecer un ancho máximo más pequeño
-      lineHeight: '1.5', // Mejora la legibilidad del texto
-      padding: '0 20px', // Añadir un poco de padding a los lados si es necesario
+      top: '50%', 
+      left: '0', 
+      transform: 'translateY(-50%)', 
+      color: '#fff', 
+      textAlign: 'right', 
+      maxWidth: '300px', 
+      lineHeight: '1.5', 
+      padding: '0 20px', 
     },
     title: {
       position: 'absolute',
-      bottom: '20px', // Alinear en la parte inferior
-      left: '20px', // Pegado a la izquierda
-      color: '#fff', // Color del texto
-      fontSize: '1.5rem', // Tamaño del texto
-      margin: '0', // Sin margen
+      bottom: '20px', 
+      left: '20px', 
+      color: '#fff', 
+      fontSize: '1.5rem', 
+      margin: '0', 
     },
     rightContainer: {
       position: 'absolute',
-      top: '50%', // Centrar verticalmente
-      right: '20px', // Espaciado hacia la derecha
-      transform: 'translateY(-50%)', // Ajustar para centrar
-      backgroundColor: '#16284A', // Color de fondo
-      borderRadius: '10px', // Bordes curveados
+      top: '50%', 
+      right: '20px',
+      transform: 'translateY(-50%)', 
+      backgroundColor: '#16284A', 
+      borderRadius: '10px', 
       padding: '20px',
-      width: '300px', // Ancho del contenedor
-      color: '#fff', // Color del texto
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Sombra del contenedor
-      textAlign: 'center', // Alinear texto al centro
+      width: '300px', 
+      color: '#fff', 
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      textAlign: 'center', 
     },
     sectionTitle: {
-      fontSize: '1.2rem', // Reducir tamaño del texto del título
-      margin: '0 0 10px 0', // Margen inferior para el título
+      fontSize: '1.2rem', 
+      margin: '0 0 10px 0', 
     },
     separator: {
       height: '2px',
       backgroundColor: '#fff',
-      margin: '10px 0', // Margen superior e inferior
+      margin: '10px 0', 
     },
     list: {
       padding: '0',
-      margin: '10px 0', // Margen superior e inferior
+      margin: '10px 0', 
     },
     listItem: {
-      fontSize: '0.9rem', // Reducir tamaño del texto de la lista
-      textAlign: 'center', // Alinear texto al centro
-      marginBottom: '5px', // Margen inferior para separar los elementos
+      fontSize: '0.9rem', 
+      textAlign: 'center', 
+      marginBottom: '5px', 
     },
     button: {
-      backgroundColor: '#3889D7', // Color del botón
-      color: '#fff', // Color del texto del botón
+      backgroundColor: '#3889D7', 
+      color: '#fff', 
       border: 'none',
       borderRadius: '5px',
       padding: '10px 0',
       cursor: 'pointer',
-      width: '100%', // Ocupa todo el ancho del contenedor
+      width: '100%', 
       textAlign: 'center',
-      transition: 'background-color 0.3s', // Transición para el hover
+      transition: 'background-color 0.3s', 
     },
     buttonHover: {
-      backgroundColor: '#2A6EB4', // Color del botón en hover
+      backgroundColor: '#2A6EB4', 
     },
   };
 
   return (
     <div>
-      <Navbar /> {/* Mantener el Navbar */}
+      <Navbar /> 
       <div style={styles.contentContainer}>
         <p>
           Ocean acidification is a pressing issue resulting from increased CO2 emissions, which leads to harmful effects on marine ecosystems. As our oceans absorb excess carbon dioxide, the water becomes more acidic, threatening marine life and altering the delicate balance of ocean habitats. Join us in understanding the implications of acidification and how we can take action to mitigate its effects.
         </p>
       </div>
-      <h2 style={styles.title}>OCEAN ACIDIFICATION INDEX</h2> {/* Título en la parte inferior izquierda */}
-
-      {/* Contenedor de "ALARMING REALITIES" */}
+      <h2 style={styles.title}>OCEAN ACIDIFICATION INDEX</h2> 
       <div style={styles.rightContainer}>
         <h2 style={styles.sectionTitle}>ALARMING REALITIES</h2>
         <div style={styles.separator}></div>
