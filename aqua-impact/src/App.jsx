@@ -3,6 +3,11 @@ import LoginRegister from "./pages/login";
 import CardSlider from "./pages/menu";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css"
+import PollutionSection from './pages/pollutionSection';
+import ScarcitySection from './pages/scarcitySection';
+import AcidificationSection from './pages/acidificationSection';
+import EvaluationSection from './pages/evaluationSection';
+
 function App() {
   return (
     <Router>
@@ -11,6 +16,10 @@ function App() {
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
+          <Route path="/pollution" element={<PollutionSection />} />
+          <Route path="/scarcity" element={<ScarcitySection />} />
+          <Route path="/acidification" element={<AcidificationSection />} />
+          <Route path="/evaluation" element={<EvaluationSection />} />
         </Routes>
       </AuthProvider>
     </Router>
