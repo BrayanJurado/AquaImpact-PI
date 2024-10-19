@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import '../assets/styles/swiper-bundle.min.css';
 import '../assets/styles/Menu.css';
 import { Navbar } from '../components/Navbar';
-import { useNavigate } from 'react-router-dom';  // Importa useNavigate
+import { useNavigate } from 'react-router-dom';  
 import { Navigation, Pagination } from 'swiper/modules';
 
 import quizImg from '../assets/images/quiz.png';
@@ -12,7 +12,7 @@ import tarjeta2Img from '../assets/images/tarjeta2.png';
 import tarjeta3Img from '../assets/images/tarjeta3.png';
 
 function CardSlider() {
-  const navigate = useNavigate();  // Define el hook useNavigate
+  const navigate = useNavigate();  
 
   return (
     <div>
@@ -32,7 +32,6 @@ function CardSlider() {
           className="card__content"
         >
           <div className="swiper-wrapper">
-            {/* Tarjeta 1 - Pollution */}
             <SwiperSlide>
               <article className="card__article swiper-slide">
                 <div className="card__image">
@@ -47,7 +46,7 @@ function CardSlider() {
                   <a
                     href="#"
                     className="card__button"
-                    onClick={() => navigate('/pollution')}  // Redirige a la sección de Pollution
+                    onClick={() => navigate('/pollution')}  
                   >
                     EXPLORE
                   </a>
@@ -55,7 +54,6 @@ function CardSlider() {
               </article>
             </SwiperSlide>
 
-            {/* Tarjeta 2 - Scarcity */}
             <SwiperSlide>
               <article className="card__article swiper-slide">
                 <div className="card__image">
@@ -70,7 +68,7 @@ function CardSlider() {
                   <a
                     href="#"
                     className="card__button"
-                    onClick={() => navigate('/scarcity')}  // Redirige a la sección de Scarcity
+                    onClick={() => navigate('/scarcity')} 
                   >
                     EXPLORE
                   </a>
@@ -78,7 +76,6 @@ function CardSlider() {
               </article>
             </SwiperSlide>
 
-            {/* Tarjeta 3 - Acidification */}
             <SwiperSlide>
               <article className="card__article swiper-slide">
                 <div className="card__image">
@@ -93,7 +90,7 @@ function CardSlider() {
                   <a
                     href="#"
                     className="card__button"
-                    onClick={() => navigate('/acidification')}  // Redirige a la sección de Acidification
+                    onClick={() => navigate('/acidification')}  
                   >
                     EXPLORE
                   </a>
@@ -101,7 +98,6 @@ function CardSlider() {
               </article>
             </SwiperSlide>
 
-            {/* Tarjeta 4 - Evaluation */}
             <SwiperSlide>
               <article className="card__article swiper-slide">
                 <div className="card__image">
@@ -116,7 +112,7 @@ function CardSlider() {
                   <a
                     href="#"
                     className="card__button"
-                    onClick={() => navigate('/evaluation')}  // Redirige a la sección de Evaluation
+                    onClick={() => navigate('/evaluation')}  
                   >
                     EXPLORE
                   </a>
