@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
+import EarthModel from '../components3D/earthModel'; // Ajusta la ruta según tu estructura de carpetas
 
 function PollutionSection() {
-  // Definir estilos en los objetoss
+  // Definir estilos en los objetos
   const styles = {
     navbarContainer: {
       display: 'flex',
@@ -74,6 +75,15 @@ function PollutionSection() {
     buttonHover: {
       backgroundColor: '#2A6EB4', 
     },
+    earthModelContainer: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      width: '100%', 
+      height: '100%', 
+      pointerEvents: 'none',
+    },
   };
 
   return (
@@ -102,6 +112,11 @@ function PollutionSection() {
         >
           EXPLORE SOLUTIONS
         </button>
+      </div>
+
+      {/* Renderiza el modelo de la Tierra */}
+      <div style={styles.earthModelContainer}>
+        <EarthModel />
       </div>
     </div>
   );
