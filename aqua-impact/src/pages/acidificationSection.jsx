@@ -1,14 +1,20 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import EarthModel from '../components3D/earthModel'; 
+import EarthModel from '../components3D/earthModel';
 
 function AcidificationSection() {
   // Definir estilos en los objetos
   const styles = {
+    navbarContainer: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '10px 20px',
+      position: 'relative', 
+    },
     contentContainer: {
       position: 'absolute',
       top: '50%', 
-      left: '0', 
+      left: '50px', 
       transform: 'translateY(-50%)', 
       color: '#fff', 
       textAlign: 'right', 
@@ -27,19 +33,20 @@ function AcidificationSection() {
     rightContainer: {
       position: 'absolute',
       top: '50%', 
-      right: '20px',
+      right: '20px', 
       transform: 'translateY(-50%)', 
       backgroundColor: '#16284A', 
       borderRadius: '10px', 
       padding: '20px',
       width: '300px', 
       color: '#fff', 
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-      textAlign: 'center', 
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
+      textAlign: 'left', // Alineado a la izquierda
     },
     sectionTitle: {
-      fontSize: '1.2rem', 
-      margin: '0 0 10px 0', 
+      fontSize: '1rem', // Reducido el tamaño de fuente
+      margin: '0 0 10px 0',
+      textAlign: 'center', // Centrando el título
     },
     separator: {
       height: '2px',
@@ -49,10 +56,12 @@ function AcidificationSection() {
     list: {
       padding: '0',
       margin: '10px 0', 
+      textAlign: 'left', // Alineado a la izquierda
+      width: '100%', // Ocupa todo el ancho del contenedor
     },
     listItem: {
       fontSize: '0.9rem', 
-      textAlign: 'center', 
+      textAlign: 'left', // Alineado a la izquierda
       marginBottom: '5px', 
     },
     button: {
@@ -76,7 +85,7 @@ function AcidificationSection() {
       transform: 'translate(-50%, -50%)',
       width: '100%', 
       height: '100%', 
-      pointerEvents: 'none', 
+      pointerEvents: 'none',
     },
   };
 
@@ -85,25 +94,25 @@ function AcidificationSection() {
       <Navbar /> 
       <div style={styles.contentContainer}>
         <p>
-          Ocean acidification is a pressing issue resulting from increased CO2 emissions, which leads to harmful effects on marine ecosystems. As our oceans absorb excess carbon dioxide, the water becomes more acidic, threatening marine life and altering the delicate balance of ocean habitats. Join us in understanding the implications of acidification and how we can take action to mitigate its effects.
+          La acidificación de los océanos, causada por el aumento de CO₂, amenaza la vida marina y los ecosistemas oceánicos. Comprender sus efectos y actuar para mitigarlos es esencial.
         </p>
       </div>
-      <h2 style={styles.title}>OCEAN ACIDIFICATION INDEX</h2> 
+      <h2 style={styles.title}>ÍNDICE DE ACIDIFICACIÓN DEL OCÉANO</h2> 
       <div style={styles.rightContainer}>
-        <h2 style={styles.sectionTitle}>ALARMING REALITIES</h2>
+        <h2 style={styles.sectionTitle}>REALIDADES ALARMANTES</h2>
         <div style={styles.separator}></div>
         <div style={styles.list}>
-          <p style={styles.listItem}>1. The oceans have absorbed about 30% of the carbon dioxide produced by humans, leading to increased acidity.</p>
-          <p style={styles.listItem}>2. Ocean acidity has increased by 30% since the beginning of the Industrial Revolution.</p>
-          <p style={styles.listItem}>3. Coral reefs, vital to marine biodiversity, are severely impacted by acidification, hindering their growth and resilience.</p>
-          <p style={styles.listItem}>4. Acidification threatens shellfish populations, impacting fisheries and food security for millions of people.</p>
+          <p style={styles.listItem}>1. Los océanos han absorbido aproximadamente el 30% del dióxido de carbono producido por los humanos, lo que ha aumentado la acidez.</p>
+          <p style={styles.listItem}>2. La acidez del océano ha aumentado en un 30% desde el comienzo de la Revolución Industrial.</p>
+          <p style={styles.listItem}>3. Los arrecifes de coral, vitales para la biodiversidad marina, están gravemente afectados por la acidificación, lo que dificulta su crecimiento y resistencia.</p>
+          <p style={styles.listItem}>4. La acidificación amenaza a las poblaciones de mariscos, impactando la pesca y la seguridad alimentaria de millones de personas.</p>
         </div>
         <button
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
         >
-          EXPLORE SOLUTIONS
+          EXPLORAR SOLUCIONES
         </button>
       </div>
 

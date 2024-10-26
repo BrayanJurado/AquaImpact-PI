@@ -18,9 +18,9 @@ const Modal = ({ isOpen, onClose }) => {
   const renderContent = () => {
     switch (activeSection) {
       case 'account':
-        return <div>Account Settings</div>;
+        return <div>Configuración de cuenta</div>;
       case 'progress':
-        return <div>Progress Report</div>;
+        return <div>Reporte de progreso</div>;
       default:
         return null;
     }
@@ -42,7 +42,7 @@ const Modal = ({ isOpen, onClose }) => {
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#124679'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = menuButtonColor.account}
             >
-              Account
+              Cuenta
             </button>
             <div style={styles.separator} />
             <button
@@ -51,7 +51,7 @@ const Modal = ({ isOpen, onClose }) => {
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#124679'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = menuButtonColor.progress}
             >
-              Progress
+              Progreso
             </button>
             <div style={styles.separator} />
           </div>
