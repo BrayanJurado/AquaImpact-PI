@@ -14,7 +14,7 @@ function PollutionSection() {
     contentContainer: {
       position: 'absolute',
       top: '50%', 
-      left: '0', 
+      left: '50px', 
       transform: 'translateY(-50%)', 
       color: '#fff', 
       textAlign: 'right', 
@@ -41,11 +41,12 @@ function PollutionSection() {
       width: '300px', 
       color: '#fff', 
       boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
-      textAlign: 'center', 
+      textAlign: 'left', // Alineado a la izquierda
     },
     sectionTitle: {
-      fontSize: '1.2rem', 
-      margin: '0 0 10px 0', 
+      fontSize: '1rem', // Reducido el tamaño de fuente
+      margin: '0 0 10px 0',
+      textAlign: 'center', // Centrando el título
     },
     separator: {
       height: '2px',
@@ -55,10 +56,12 @@ function PollutionSection() {
     list: {
       padding: '0',
       margin: '10px 0', 
+      textAlign: 'left', // Alineado a la izquierda
+      width: '100%', // Ocupa todo el ancho del contenedor
     },
     listItem: {
       fontSize: '0.9rem', 
-      textAlign: 'center', 
+      textAlign: 'left', // Alineado a la izquierda
       marginBottom: '5px', 
     },
     button: {
@@ -91,26 +94,26 @@ function PollutionSection() {
       <Navbar /> 
       <div style={styles.contentContainer}>
         <p>
-          Water pollution threatens life on our planet. From plastic waste that harms marine life to chemicals that affect our health, every contaminated drop counts. Discover how these actions harm our ecosystem and learn how to protect this vital resource.
+        La contaminación del agua amenaza nuestro planeta. Desde plásticos que dañan la vida marina hasta químicos que afectan nuestra salud, cada gota cuenta. ¡Descubre cómo proteger este recurso vital!
         </p>
       </div>
-      <h2 style={styles.title}>POLLUTION INDEX</h2> 
+      <h2 style={styles.title}>ÍNDICE DE CONTAMINACIÓN</h2> 
 
       <div style={styles.rightContainer}>
-        <h2 style={styles.sectionTitle}>ALARMING REALITIES</h2>
+        <h2 style={styles.sectionTitle}>REALIDADES ALARMANTES</h2>
         <div style={styles.separator}></div>
         <div style={styles.list}>
-          <p style={styles.listItem}>1. More than 80% of wastewater is discharged into the environment without treatment.</p>
-          <p style={styles.listItem}>2. Approximately 2 million tons of sewage and industrial waste are dumped into the oceans daily.</p>
-          <p style={styles.listItem}>3. Water pollution is responsible for over 1 million deaths each year globally.</p>
-          <p style={styles.listItem}>4. Plastics account for 60-80% of marine debris, causing severe harm to marine life.</p>
+          <p style={styles.listItem}>1. Más del 80% de las aguas residuales se descargan en el medio ambiente sin tratamiento.</p>
+          <p style={styles.listItem}>2. Aproximadamente 2 millones de toneladas de aguas residuales y desechos industriales se vierten en los océanos diariamente.</p>
+          <p style={styles.listItem}>3. La contaminación del agua causa más de 1 millón de muertes cada año a nivel mundial.</p>
+          <p style={styles.listItem}>4. Los plásticos representan entre el 60% y 80% de los desechos marinos, causando un gran daño a la vida marina.</p>
         </div>
         <button
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
         >
-          EXPLORE SOLUTIONS
+          EXPLORAR SOLUCIONES
         </button>
       </div>
 

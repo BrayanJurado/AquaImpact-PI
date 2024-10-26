@@ -73,7 +73,7 @@ export const Navbar = () => {
             style={{ padding: '10px 14px', cursor: 'pointer', backgroundColor: highlightedOption === 'edit' ? '#22B8CF' : 'transparent', color: highlightedOption === 'edit' ? '#fff' : '#333', fontSize: '14px' }}
           >
             <FaEdit style={{ marginRight: '10px' }} />
-            <span>Profile Settings</span>
+            <span>Ajustes perfil</span>
           </div>
           <div
             className="sub-menu-item"
@@ -83,7 +83,7 @@ export const Navbar = () => {
             style={{ padding: '10px 14px', cursor: 'pointer', backgroundColor: highlightedOption === 'progress' ? '#22B8CF' : 'transparent', color: highlightedOption === 'progress' ? '#fff' : '#333', fontSize: '14px' }}
           >
             <FaChartLine style={{ marginRight: '10px' }} />
-            <span>My Progress</span>
+            <span>Mi progreso</span>
           </div>
           <div
             className="sub-menu-item"
@@ -93,7 +93,7 @@ export const Navbar = () => {
             style={{ padding: '10px 14px', cursor: 'pointer', backgroundColor: highlightedOption === 'logout' ? '#22B8CF' : 'transparent', color: highlightedOption === 'logout' ? '#fff' : '#333', fontSize: '14px' }}
           >
             <FaSignOutAlt style={{ marginRight: '10px' }} />
-            <span>Sign Out</span>
+            <span>Cerrar sesión</span>
           </div>
         </div>
       )}
