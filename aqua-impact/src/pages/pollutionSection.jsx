@@ -1,103 +1,132 @@
-import React from 'react';
+// PollutionSection.jsx
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
-import EarthModel from '../components3D/earthModel'; // Ajusta la ruta según tu estructura de carpetas
+import EarthModel from '../components3D/earthModel';
+import indexImage from '../assets/images/index.png'; // Ajusta la ruta si es necesario
 
 function PollutionSection() {
-  // Definir estilos en los objetos
+  const navigate = useNavigate();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+  const handleImageClick = () => navigate('/indexPollution'); // Redirige a /indexPollution
+
   const styles = {
     navbarContainer: {
       display: 'flex',
       alignItems: 'center',
       padding: '10px 20px',
-      position: 'relative', 
+      position: 'relative',
     },
     contentContainer: {
       position: 'absolute',
-      top: '50%', 
-      left: '50px', 
-      transform: 'translateY(-50%)', 
-      color: '#fff', 
-      textAlign: 'right', 
-      maxWidth: '300px', 
-      lineHeight: '1.5', 
-      padding: '0 20px', 
+      top: '50%',
+      left: '50px',
+      transform: 'translateY(-50%)',
+      color: '#fff',
+      textAlign: 'right',
+      maxWidth: '300px',
+      lineHeight: '1.5',
+      padding: '0 20px',
     },
-    title: {
+    titleContainer: {
       position: 'absolute',
-      bottom: '20px', 
-      left: '20px', 
-      color: '#fff', 
-      fontSize: '1.5rem', 
-      margin: '0', 
+      bottom: '20px',
+      left: '20px',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    titleImage: {
+      width: '70px',
+      height: '70px',
+      marginRight: '10px',
+      cursor: 'pointer', // Cambia el cursor al pasar sobre la imagen
+    },
+    titleText: {
+      color: '#fff',
+      fontSize: '1.5rem',
+      marginBottom: '-20px',
     },
     rightContainer: {
       position: 'absolute',
-      top: '50%', 
-      right: '20px', 
-      transform: 'translateY(-50%)', 
-      backgroundColor: '#16284A', 
-      borderRadius: '10px', 
+      top: '50%',
+      right: '20px',
+      transform: 'translateY(-50%)',
+      backgroundColor: '#16284A',
+      borderRadius: '10px',
       padding: '20px',
-      width: '300px', 
-      color: '#fff', 
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
-      textAlign: 'left', // Alineado a la izquierda
+      width: '300px',
+      color: '#fff',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      textAlign: 'left',
     },
     sectionTitle: {
-      fontSize: '1rem', // Reducido el tamaño de fuente
+      fontSize: '1rem',
       margin: '0 0 10px 0',
-      textAlign: 'center', // Centrando el título
+      textAlign: 'center',
     },
     separator: {
       height: '2px',
       backgroundColor: '#fff',
-      margin: '10px 0', 
+      margin: '10px 0',
     },
     list: {
       padding: '0',
-      margin: '10px 0', 
-      textAlign: 'left', // Alineado a la izquierda
-      width: '100%', // Ocupa todo el ancho del contenedor
+      margin: '10px 0',
+      textAlign: 'left',
+      width: '100%',
     },
     listItem: {
-      fontSize: '0.9rem', 
-      textAlign: 'left', // Alineado a la izquierda
-      marginBottom: '5px', 
+      fontSize: '0.9rem',
+      textAlign: 'left',
+      marginBottom: '5px',
     },
     button: {
-      backgroundColor: '#3889D7', 
-      color: '#fff', 
+      backgroundColor: '#3889D7',
+      color: '#fff',
       border: 'none',
       borderRadius: '5px',
       padding: '10px 0',
       cursor: 'pointer',
-      width: '100%', 
+      width: '100%',
       textAlign: 'center',
-      transition: 'background-color 0.3s', 
+      transition: 'background-color 0.3s',
     },
     buttonHover: {
-      backgroundColor: '#2A6EB4', 
+      backgroundColor: '#2A6EB4',
     },
     earthModelContainer: {
       position: 'absolute',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '100%', 
-      height: '100%', 
-      pointerEvents: 'none',
+      width: '100vh',
+      height: '100vh',
+      pointerEvents: 'auto',
     },
   };
 
   return (
     <div>
-      <Navbar /> 
+      <Navbar />
       <div style={styles.contentContainer}>
         <p>
-        La contaminación del agua amenaza nuestro planeta. Desde plásticos que dañan la vida marina hasta químicos que afectan nuestra salud, cada gota cuenta. ¡Descubre cómo proteger este recurso vital!
+          La contaminación del agua amenaza nuestro planeta. Desde plásticos que dañan la vida marina hasta químicos que afectan nuestra salud, cada gota cuenta. ¡Descubre cómo proteger este recurso vital!
         </p>
       </div>
-      <h2 style={styles.title}>ÍNDICE DE CONTAMINACIÓN</h2> 
+
+      <div style={styles.titleContainer}>
+        <img 
+          src={indexImage} 
+          alt="Índice de Contaminación" 
+          style={styles.titleImage} 
+          onClick={handleImageClick} 
+        />
+        <h2 style={styles.titleText}>VER NIVELES DE CONTAMINACIÓN</h2>
+      </div>
 
       <div style={styles.rightContainer}>
         <h2 style={styles.sectionTitle}>REALIDADES ALARMANTES</h2>
@@ -117,7 +146,6 @@ function PollutionSection() {
         </button>
       </div>
 
-      {/* Renderiza el modelo de la Tierra */}
       <div style={styles.earthModelContainer}>
         <EarthModel />
       </div>
