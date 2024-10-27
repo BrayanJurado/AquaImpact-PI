@@ -2,11 +2,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginRegister from "./pages/login"; 
 import CardSlider from "./pages/menu";
 import { AuthProvider } from "./context/AuthContext";
-import "./App.css"
+import "./App.css";
 import PollutionSection from './pages/pollutionSection';
 import ScarcitySection from './pages/scarcitySection';
 import AcidificationSection from './pages/acidificationSection';
 import EvaluationSection from './pages/evaluationSection';
+import IndexPol from './pages/indexPol'; 
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/scarcity" element={<ScarcitySection />} />
           <Route path="/acidification" element={<AcidificationSection />} />
           <Route path="/evaluation" element={<EvaluationSection />} />
+          <Route path="/indexPollution" element={<IndexPol />} /> 
         </Routes>
       </AuthProvider>
     </Router>

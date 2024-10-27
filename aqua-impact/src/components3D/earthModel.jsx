@@ -16,7 +16,7 @@ const EarthModel = () => {
       <Suspense fallback={null}>
         <ambientLight intensity={0.5} />
         <Globe />
-        <OrbitControls enableZoom={true} />
+        <OrbitControls enableZoom={false} />
       </Suspense>
       <Environment preset='sunset' />
     </Canvas>
