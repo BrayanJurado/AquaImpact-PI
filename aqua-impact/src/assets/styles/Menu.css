@@ -167,7 +167,19 @@
     /* For medium devices */
   @media screen and (min-width: 1120px) {
     .card__content {
-      padding-left: 10rem;
+      padding-left: 4%;
+      padding-right: 5%;
+    }
+
+  }
+
+  /* For medium devices */
+  @media screen and (min-width: 1800px) {
+    .card__content {
+      margin-left: 2%;
+      margin-right: 2%;
+      padding-left: 8%;
       padding-right: 1rem;
     }
+
   }
