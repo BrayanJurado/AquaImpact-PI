@@ -26,8 +26,8 @@ function CardSlider() {
           pagination={{ clickable: true, dynamicBullets: true }}
           navigation={{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }}
           breakpoints={{
-            600: { slidesPerView: 2 },
-            968: { slidesPerView: 3 },
+            650: { slidesPerView: 2 },
+            975: { slidesPerView: 3 },
           }}
           className="card__content"
         >
@@ -45,10 +45,10 @@ function CardSlider() {
                   </p>
                   <a
                     href="#"
-                    className="card__button"
+                    className="card__button"  
                     onClick={() => navigate('/pollution')}
                   >
-                    VER 
+                    VER
                   </a>
                 </div>
               </article>

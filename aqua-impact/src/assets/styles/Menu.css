@@ -14,6 +14,10 @@
     margin-inline: 5.75rem;
     border-radius: 1.25rem;
     overflow: hidden;
+    padding-left: 6.7rem;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+
   }
   
   .card__article {
@@ -139,16 +143,19 @@
     background-color: var(--second-color);
   }
   
-  @media screen and (max-width: 320px) {
-    .card__data {
-      padding: 1rem;
+  @media screen and (min-width: 320px) {
+    .card__content{
+      width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-inline: 1rem;
     }
   }
   
   /* For medium devices */
   @media screen and (min-width: 768px) {
     .card__content {
-      margin-inline: 3rem;
+      margin-inline: 1rem;
     }
   
     .swiper-button-next,
@@ -156,17 +163,11 @@
       display: block;
     }
   }
-  
-  /* For large devices */
+
+    /* For medium devices */
   @media screen and (min-width: 1120px) {
-    .card__container {
-      max-width: 1120px;
-    }
-  
-    .swiper-button-prev {
-      left: -1rem;
-    }
-    .swiper-button-next {
-      right: -1rem;
+    .card__content {
+      padding-left: 10rem;
+      padding-right: 1rem;
     }
   }
