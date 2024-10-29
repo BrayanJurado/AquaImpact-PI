@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUserCircle, FaSignOutAlt, FaEdit, FaChevronDown, FaChevronUp, FaChartLine } from 'react-icons/fa';
+import { FaUserCircle, FaSignOutAlt, FaEdit, FaChevronDown, FaChevronUp, FaChartLine, FaInfoCircle } from 'react-icons/fa';
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import logo from '../assets/images/logofc.png'; 
@@ -38,6 +38,11 @@ export const Navbar = () => {
     setIsModalOpen(true); 
   };
 
+  const handleIntroduction = () => {
+    setModalContent('Bienvenido a nuestro proyecto, aquí aprenderás sobre temas de concientización ambiental...'); 
+    setIsModalOpen(true);
+  };
+  
   const confirmLogout = async () => {
     try {
       await auth.logout();
@@ -65,6 +70,16 @@ export const Navbar = () => {
 
       {dropdownOpen && (
         <div className="sub-menu" style={{ position: 'absolute', top: 'calc(60px - 10px)', right: '20px', backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '10px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)', zIndex: 1000, minWidth: '160px', transform: 'translateY(0)', transition: 'transform 0.2s ease' }}>
+          <div
+            className="sub-menu-item"
+            onClick={() => { toggleDropdown(); handleIntroduction(); }}  // Llama a handleIntroduction al hacer clic
+            onMouseEnter={() => setHighlightedOption('introduction')}
+            onMouseLeave={() => setHighlightedOption(null)}
+            style={{ padding: '10px 14px', cursor: 'pointer', backgroundColor: highlightedOption === 'introduction' ? '#22B8CF' : 'transparent', color: highlightedOption === 'introduction' ? '#fff' : '#333', fontSize: '14px' }}
+          >
+            <FaInfoCircle style={{ marginRight: '10px' }} />
+            <span>Introducción</span>
+          </div>
           <div
             className="sub-menu-item"
             onClick={() => { toggleDropdown(); handleProfileSettings(); }}
