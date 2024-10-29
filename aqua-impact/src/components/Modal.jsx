@@ -3,7 +3,7 @@ import { FaTimes, FaUserCircle } from 'react-icons/fa';
 
 const Modal = ({ isOpen, onClose }) => {
   const [activeSection, setActiveSection] = useState('account'); 
-  const [menuButtonColor, setMenuButtonColor] = useState({ account: '#16284A', progress: '#16284A' });
+  const [menuButtonColor, setMenuButtonColor] = useState({ account: '#16284A', progress: '#16284A', introduction: '#16284A'});
 
   if (!isOpen) return null; 
 
@@ -12,6 +12,7 @@ const Modal = ({ isOpen, onClose }) => {
     setMenuButtonColor({
       account: section === 'account' ? '#124679' : '#16284A',
       progress: section === 'progress' ? '#124679' : '#16284A',
+      introduction: section === 'introduction' ? '#124679' : '#16284A',
     });
   };
 
@@ -21,6 +22,15 @@ const Modal = ({ isOpen, onClose }) => {
         return <div>Configuración de cuenta</div>;
       case 'progress':
         return <div>Reporte de progreso</div>;
+      case 'introduction':
+        return (
+          <div style={styles.introductionContent}>
+            <h4 style={styles.introductionTitle}>AquaImpact</h4>
+            <p style={styles.introductionText}>
+              Bienvenido a AquaImpact. Este proyecto tiene como objetivo concientizar sobre la importancia del agua, abordando temas de contaminación, escasez y acidificación de los recursos hídricos. A través de una experiencia interactiva, podrás explorar el impacto de estas problemáticas y aprender cómo podemos contribuir a su solución.
+            </p>
+          </div>
+        );        
       default:
         return null;
     }
@@ -36,6 +46,15 @@ const Modal = ({ isOpen, onClose }) => {
               <FaUserCircle style={styles.userIcon} />
               <div style={styles.userName}>User name</div>
             </div>
+            <button
+              onClick={() => handleSectionChange('introduction')}
+              style={{ ...styles.menuButton, backgroundColor: menuButtonColor.introduction }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#124679'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = menuButtonColor.introduction}
+            >
+              Introducción
+            </button>
+            <div style={styles.separator} />
             <button
               onClick={() => handleSectionChange('account')}
               style={{ ...styles.menuButton, backgroundColor: menuButtonColor.account }}
@@ -87,6 +106,19 @@ const styles = {
     height: '500px', 
     display: 'flex',
     flexDirection: 'column',
+  },
+  introductionContent: {
+    maxWidth: '485px',
+    margin: '0 auto', // centra el contenido dentro del modal
+    padding: '20px',  // agrega espacio interno
+  },
+  introductionTitle: {
+    marginBottom: '15px', // espacio entre el título y el párrafo
+    color: '#fff',
+  },
+  introductionText: {
+    color: '#ddd',
+    lineHeight: '1.6', // mejora la legibilidad
   },
   closeIcon: {
     cursor: 'pointer',
