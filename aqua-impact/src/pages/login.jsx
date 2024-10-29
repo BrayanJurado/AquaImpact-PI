@@ -24,8 +24,8 @@ const LoginRegister = () => {
       if (userExists) {
         Swal.fire({
           icon: 'info',
-          title: 'User Already Exists',
-          text: 'An account with this email already exists. Please log in instead.',
+          title: 'Usuario Ya Existente',
+          text: 'Una cuenta con este correo ya existe. Por favor inicia sesión.',
         });
         return;
       }
@@ -33,15 +33,15 @@ const LoginRegister = () => {
       await auth.register(emailRegister, passwordRegister);
       Swal.fire({
         icon: 'success',
-        title: 'Registration Successful',
-        text: `Welcome, ${emailRegister}!`,
+        title: 'Registro Exitoso',
+        text: `Bienvenido, ${emailRegister}!`,
       });
       navigate("/menu"); // Redirige a la interfaz Acces
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Registration Error',
-        text: error.message || 'An error occurred. Please try again.',
+        title: 'Error en el Registro',
+        text: error.message || 'Ocurrió un error. Por favor inténtelo nuevamente.',
       });
     }
   };
@@ -52,15 +52,15 @@ const LoginRegister = () => {
       await auth.login(email, password);
       Swal.fire({
         icon: 'success',
-        title: 'Login Successful',
-        text: `Welcome back, ${email}!`,
+        title: 'Inicio de Sesión Exitoso',
+        text: `Bienvenido de nuevo, ${email}!`,
       });
       navigate("/menu"); 
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Login Error',
-        text: error.message || 'An error occurred. Please try again.',
+        title: 'Error en Inicio de Sesión',
+        text: error.message || 'Ocurrió un error. Por favor inténtelo nuevamente.',
       });
     }
   };
@@ -71,15 +71,15 @@ const LoginRegister = () => {
       await auth.loginWithGoogle();
       Swal.fire({
         icon: 'success',
-        title: 'Login Successful',
-        text: 'Welcome back with Google!',
+        title: 'Inicio de Sesión Exitoso',
+        text: 'Bienvenido de nuevo con Google!',
       });
       navigate("/menu"); 
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Google Login Error',
-        text: error.message || 'An error occurred. Please try again.',
+        title: 'Error en Inicio de Sesión con Google',
+        text: error.message || 'Ocurrió un error. Por favor inténtelo nuevamente.',
       });
     }
   };
@@ -91,8 +91,8 @@ const LoginRegister = () => {
     } catch (error) {
       Swal.fire({
         icon: 'error',
-        title: 'Logout Error',
-        text: error.message || 'An error occurred during logout.',
+        title: 'Error al Cerrar Sesión',
+        text: error.message || 'Ocurrió un error al cerrar sesión.',
       });
     }
   };
@@ -100,86 +100,86 @@ const LoginRegister = () => {
   return (
     <div className="login-container">
       <div className="icon-container">
-      <img src={icono} alt="Project Logo" style={{ height: '45px', marginLeft: '10px' }} />
+        <img src={icono} alt="Logo del Proyecto" style={{ height: '45px', marginLeft: '10px' }} />
       </div>
       <div className={`container ${!isLogin ? 'active' : ''}`} id="container">
-        {displayName && <h5>Welcome: {displayName}</h5>}
+        {displayName && <h5>Bienvenido: {displayName}</h5>}
         <div className="form-container sign-up">
           <form onSubmit={handleRegister}>
-            <h1>Create Account</h1>
+            <h1>Crear Cuenta</h1>
             <div className="social-icons">
               <a href="#" className="icon" onClick={handleGoogle}>
                 <FcGoogle size={24} />
               </a>
             </div>
-            <span>or use your email for registration</span>
+            <span>o usa tu correo para registrarte</span>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Correo Electrónico"
               value={emailRegister}
               onChange={(e) => setEmailRegister(e.target.value)}
-              aria-label="Email"
+              aria-label="Correo Electrónico"
               required
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               value={passwordRegister}
               onChange={(e) => setPasswordRegister(e.target.value)}
-              aria-label="Password"
+              aria-label="Contraseña"
               required
             />
-            <button type="submit">Sign Up</button>
+            <button type="submit">Registrarse</button>
           </form>
         </div>
         <div className="form-container sign-in">
           <form onSubmit={handleLogin}>
-            <h1>Sign In</h1>
+            <h1>Iniciar Sesión</h1>
             <div className="social-icons">
               <a href="#" className="icon" onClick={handleGoogle}>
                 <FcGoogle size={24} />
               </a>
             </div>
-            <span>or use your email to log in</span>
+            <span>o usa tu correo para iniciar sesión</span>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Correo Electrónico"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              aria-label="Email"
+              aria-label="Correo Electrónico"
               required
             />
             <input
               type="password"
-              placeholder="Password"
+              placeholder="Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              aria-label="Password"
+              aria-label="Contraseña"
               required
             />
-            <a href="#">Forgot your password?</a>
-            <button type="submit">Log In</button>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+            <button type="submit">Iniciar Sesión</button>
           </form>
         </div>
         <div className="toggle-container">
           <div className="toggle">
             <div className="toggle-panel toggle-left">
-              <h1>Welcome Back!</h1>
-              <p>Enter your personal details to access all site features</p>
+              <h1>¡Bienvenido de Vuelta!</h1>
+              <p>Ingresa tus datos personales para acceder a todas las funciones del sitio</p>
               <button className="hidden" onClick={() => setIsLogin(true)}>
-                Log In
+                Iniciar Sesión
               </button>
             </div>
             <div className="toggle-panel toggle-right">
-              <h1>Welcome to AquaImpact!</h1>
-              <p>Knowledge is power, water is vital</p>
+              <h1>Bienvenido a AquaImpact!</h1>
+              <p>El conocimiento es poder, el agua es vital</p>
               <button className="hidden" onClick={() => setIsLogin(false)}>
-                Sign Up
+                Registrarse
               </button>
             </div>
           </div>
         </div>
-        {displayName && <button onClick={handleLogout} className="button">Logout</button>}
+        {displayName && <button onClick={handleLogout} className="button">Cerrar Sesión</button>}
       </div>
     </div>
   );
