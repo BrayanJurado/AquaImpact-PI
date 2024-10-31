@@ -31,8 +31,8 @@ function CardSlider() {
           }}
           className="card__content"
         >
-          <div className="swiper-wrapper">
             <SwiperSlide>
+            {/*Tarjeta 1 contaminación*/}
               <article className="card__article swiper-slide">
                 <div className="card__image">
                   <img src={tarjeta1Img} alt="imagen" className="card__img" />
@@ -55,6 +55,7 @@ function CardSlider() {
             </SwiperSlide>
 
             <SwiperSlide>
+            {/*Tarjeta 2 Escacez*/}
               <article className="card__article swiper-slide">
                 <div className="card__image">
                   <img src={tarjeta2Img} alt="imagen" className="card__img" />
@@ -77,6 +78,7 @@ function CardSlider() {
             </SwiperSlide>
 
             <SwiperSlide>
+            {/*Tarjeta 3 Acidificacion */}
               <article className="card__article swiper-slide">
                 <div className="card__image">
                   <img src={tarjeta3Img} alt="imagen" className="card__img" />
@@ -99,6 +101,7 @@ function CardSlider() {
             </SwiperSlide>
 
             <SwiperSlide>
+            {/*Tarjeta 4 Evaluacion */}
               <article className="card__article swiper-slide">
                 <div className="card__image">
                   <img src={quizImg} alt="imagen" className="card__img" />
@@ -119,7 +122,6 @@ function CardSlider() {
                 </div>
               </article>
             </SwiperSlide>
-          </div>
 
           <div className="swiper-button-next">
             <i className="ri-arrow-right-s-line"></i>
