@@ -14,6 +14,10 @@
     margin-inline: 5.75rem;
     border-radius: 1.25rem;
     overflow: hidden;
+    padding-left: 6.7rem;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+
   }
   
   .card__article {
@@ -139,9 +143,12 @@
     background-color: var(--second-color);
   }
   
-  @media screen and (max-width: 320px) {
-    .card__data {
-      padding: 1rem;
+  @media screen and (min-width: 320px) {
+    .card__content{
+      width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-inline: 1rem;
     }
   }
   
@@ -156,21 +163,23 @@
       display: block;
     }
   }
-  
-  /* For large devices */
+
+    /* For medium devices */
   @media screen and (min-width: 1120px) {
-    .card__container {
-      max-width: 1120px;
+    .card__content {
+      padding-left: 4%;
+      padding-right: 5%;
     }
-    .card__content{
-      padding-top: 2.5rem;
-      padding-bottom: 2.5rem;
+
+  }
+
+  /* For medium devices */
+  @media screen and (min-width: 1800px) {
+    .card__content {
+      margin-left: 2%;
+      margin-right: 2%;
+      padding-left: 8%;
+      padding-right: 1rem;
     }
-  
-    .swiper-button-prev {
-      left: -1rem;
-    }
-    .swiper-button-next {
-      right: -1rem;
-    }
+
   }
