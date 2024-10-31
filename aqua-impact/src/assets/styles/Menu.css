@@ -155,7 +155,7 @@
   /* For medium devices */
   @media screen and (min-width: 768px) {
     .card__content {
-      margin-inline: 1rem;
+      margin-inline: 2rem;
     }
   
     .swiper-button-next,
@@ -166,20 +166,19 @@
 
     /* For medium devices */
   @media screen and (min-width: 1120px) {
-    .card__content {
-      padding-left: 4%;
-      padding-right: 5%;
+    .card__container {
+      max-width: 1120px;
     }
-
-  }
-
-  /* For medium devices */
-  @media screen and (min-width: 1800px) {
-    .card__content {
-      margin-left: 2%;
-      margin-right: 2%;
-      padding-left: 8%;
-      padding-right: 1rem;
+    .card__content{
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
+    }
+  
+    .swiper-button-prev {
+      left: -1rem;
+    }
+    .swiper-button-next {
+      right: -1rem;
     }
 
   }
