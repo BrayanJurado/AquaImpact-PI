@@ -72,99 +72,97 @@ function CardSlider() {
             setActiveModel(models[index]);
           }}
         >
-          {/* Tarjetas del carrusel */}
-          <SwiperSlide>
-            <article className="card__article swiper-slide">
-              <div className="card__image">
-                <img src={tarjeta1Img} alt="imagen" className="card__img" />
-                <div className="card__shadow"></div>
-              </div>
-              <div className="card__data">
-                <h3 className="card__name">CONTAMINACIÓN</h3>
-                <p className="card__description">
-                  Desde plásticos hasta desechos tóxicos ¡Descubre el impacto de la contaminación del agua!
-                </p>
-                <a
-                  href="#"
-                  className="card__button"
-                  onClick={() => navigate('/pollution')}
-                >
-                  VER
-                </a>
-              </div>
-            </article>
-          </SwiperSlide>
+            <SwiperSlide>
+            {/*Tarjeta 1 contaminación*/}
+              <article className="card__article swiper-slide">
+                <div className="card__image">
+                  <img src={tarjeta1Img} alt="imagen" className="card__img" />
+                  <div className="card__shadow"></div>
+                </div>
+                <div className="card__data">
+                  <h3 className="card__name">CONTAMINACIÓN</h3>
+                  <p className="card__description">
+                    Desde plásticos hasta desechos tóxicos ¡Descubre el impacto de la contaminación del agua!
+                  </p>
+                  <a
+                    href="#"
+                    className="card__button"  
+                    onClick={() => navigate('/pollution')}
+                  >
+                    VER
+                  </a>
+                </div>
+              </article>
+            </SwiperSlide>
 
-          {/* Repite para las demás tarjetas */}
-          <SwiperSlide>
-            <article className="card__article swiper-slide">
-              {/* Tarjeta de Escasez */}
-              <div className="card__image">
-                <img src={tarjeta2Img} alt="imagen" className="card__img" />
-                <div className="card__shadow"></div>
-              </div>
-              <div className="card__data">
-                <h3 className="card__name">ESCASEZ</h3>
-                <p className="card__description">
-                  El agua es un recurso limitado y la escasez es real ¡Explora las consecuencias de este fenómeno!
-                </p>
-                <a
-                  href="#"
-                  className="card__button"
-                  onClick={() => navigate('/scarcity')}
-                >
-                  VER
-                </a>
-              </div>
-            </article>
-          </SwiperSlide>
+            <SwiperSlide>
+            {/*Tarjeta 2 Escacez*/}
+              <article className="card__article swiper-slide">
+                <div className="card__image">
+                  <img src={tarjeta2Img} alt="imagen" className="card__img" />
+                  <div className="card__shadow"></div>
+                </div>
+                <div className="card__data">
+                  <h3 className="card__name">ESCASEZ</h3>
+                  <p className="card__description">
+                    El agua es un recurso limitado y la escasez es real ¡Explora las consecuencias de este fenómeno!
+                  </p>
+                  <a
+                    href="#"
+                    className="card__button"
+                    onClick={() => navigate('/scarcity')}
+                  >
+                    VER
+                  </a>
+                </div>
+              </article>
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <article className="card__article swiper-slide">
-              {/* Tarjeta de Acidificación */}
-              <div className="card__image">
-                <img src={tarjeta3Img}  alt="imagen" className="card__img" />
-                <div className="card__shadow"></div>
-              </div>
-              <div className="card__data">
-                <h3 className="card__name">ACIDIFICACIÓN</h3>
-                <p className="card__description">
-                  Los océanos se están volviendo más ácidos ¡Conoce este creciente desafío!
-                </p>
-                <a
-                  href="#"
-                  className="card__button"
-                  onClick={() => navigate('/acidification')}
-                >
-                  VER
-                </a>
-              </div>
-            </article>
-          </SwiperSlide>
+            <SwiperSlide>
+            {/*Tarjeta 3 Acidificacion */}
+              <article className="card__article swiper-slide">
+                <div className="card__image">
+                  <img src={tarjeta3Img} alt="imagen" className="card__img" />
+                  <div className="card__shadow"></div>
+                </div>
+                <div className="card__data">
+                  <h3 className="card__name">ACIDIFICACIÓN</h3>
+                  <p className="card__description">
+                    Los océanos se están volviendo más ácidos ¡Conoce este creciente desafío!
+                  </p>
+                  <a
+                    href="#"
+                    className="card__button"
+                    onClick={() => navigate('/acidification')}
+                  >
+                    VER
+                  </a>
+                </div>
+              </article>
+            </SwiperSlide>
 
-          <SwiperSlide>
-            <article className="card__article swiper-slide">
-              {/* Tarjeta de Evaluación */}
-              <div className="card__image">
-                <img src={quizImg} alt="imagen" className="card__img" />
-                <div className="card__shadow"></div>
-              </div>
-              <div className="card__data">
-                <h3 className="card__name">EVALUACIÓN</h3>
-                <p className="card__description">
-                  Pon a prueba tus conocimientos ¡Aprende y diviértete!
-                </p>
-                <a
-                  href="#"
-                  className="card__button"
-                  onClick={() => navigate('/evaluation')}
-                >
-                  VER
-                </a>
-              </div>
-            </article>
-          </SwiperSlide>
-        </Swiper>
+            <SwiperSlide>
+            {/*Tarjeta 4 Evaluacion */}
+              <article className="card__article swiper-slide">
+                <div className="card__image">
+                  <img src={quizImg} alt="imagen" className="card__img" />
+                  <div className="card__shadow"></div>
+                </div>
+                <div className="card__data">
+                  <h3 className="card__name">EVALUACIÓN</h3>
+                  <p className="card__description">
+                    Pon a prueba tus conocimientos ¡Aprende y diviértete!
+                  </p>
+                  <a
+                    href="#"
+                    className="card__button"
+                    onClick={() => navigate('/evaluation')}
+                  >
+                    VER
+                  </a>
+                </div>
+              </article>
+            </SwiperSlide>
 
         <div className="swiper-button-next">
           <i className="ri-arrow-right-s-line"></i>
