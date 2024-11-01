@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
 
 const CactusP = (props) => {
-    const { nodes, materials } = useGLTF('/models-3d/CactusP.glb')
+    const { nodes, materials } = useGLTF('/models-3d/desert/CactusP.glb')
     return (
       <group {...props} dispose={null} scale={20}>
         <mesh
@@ -39,5 +39,5 @@ const CactusP = (props) => {
 
 }
 
-useGLTF.preload('/models-3d/CactusP.glb');
+useGLTF.preload('/models-3d/desert/CactusP.glb');
 export default CactusP;

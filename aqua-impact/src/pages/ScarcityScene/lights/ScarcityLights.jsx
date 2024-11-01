@@ -14,15 +14,15 @@ const ScarcityLights = () => {
           ref={directionalLightRef}
           color={"yellow"}
           position={[35, 70, 30]}
-          intensity={3}
+          intensity={5}
           castShadow
-          shadow-mapSize={[2048, 2048]} // Aumenta si necesitas más resolución de sombra
+          shadow-mapSize={[4096, 4096]} // Aumenta si necesitas más resolución de sombra
           shadow-camera-left={-300}
           shadow-camera-right={300}
           shadow-camera-top={300}
           shadow-camera-bottom={-300}
           shadow-camera-near={1}
-          shadow-camera-far={1000}
+          shadow-camera-far={200}
         />
       </>
     );

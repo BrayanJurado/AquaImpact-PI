@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
 
 const BarrelCactus = (props) => {
-    const { nodes, materials } = useGLTF('/models-3d/BarrelCactus.glb')
+    const { nodes, materials } = useGLTF('/models-3d/desert/BarrelCactus.glb')
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -16,5 +16,5 @@ const BarrelCactus = (props) => {
 
 }
 
-useGLTF.preload('/models-3d/BarrelCactus.glb');
+useGLTF.preload('/models-3d/desert/BarrelCactus.glb');
 export default BarrelCactus;

@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei'
 
 const Tumbleweed = (props) => {
-    const { nodes, materials } = useGLTF('/models-3d/Tumbleweed.glb')
+    const { nodes, materials } = useGLTF('/models-3d/desert/Tumbleweed.glb')
     return (
       <group {...props} dispose={null}  scale={3}>
         <mesh
@@ -14,5 +14,5 @@ const Tumbleweed = (props) => {
     )
 }
 
-useGLTF.preload('/models-3d/Tumbleweed.glb');
+useGLTF.preload('/models-3d/desert/Tumbleweed.glb');
 export default Tumbleweed;
