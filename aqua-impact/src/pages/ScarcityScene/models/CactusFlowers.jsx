@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei'
 const CactusFlowers = (props) => {
     const { nodes, materials } = useGLTF('/models-3d/CactusFlowers.glb')
     return (
-      <group {...props} dispose={null} position={[10,0,0]} scale={10}>
+      <group {...props} dispose={null} scale={15}>
         <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
           <mesh
             castShadow

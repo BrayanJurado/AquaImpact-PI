@@ -10,7 +10,6 @@ const BarrelCactus = (props) => {
         geometry={nodes.BarrelCactus_mesh.geometry}
         material={materials.BarrelCactus_mat}
         scale={1}
-        position={[5,0,0]}
       />
     </group>
   )

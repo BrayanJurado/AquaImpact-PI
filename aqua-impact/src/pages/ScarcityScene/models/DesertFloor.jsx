@@ -3,13 +3,13 @@ import { useTexture } from "@react-three/drei";
 import { RepeatWrapping } from "three";
 
 const DesertFloor = () => {
-    const PATH = useMemo(() => "textures/desert/CrackedGround", []);
+  const PATH = useMemo(() => "textures/desert/mud_cracked_dry_03_", []);
 
   const floorTexture = useTexture({
-    map: PATH + "COL_1K.png",
-    displacementMap: PATH + "DISPVar2_1K.png",
-    normalMap: PATH + "NRM_1K.png",
-    bumpMap: PATH + "BUMP_1K.png",
+    map: PATH + "diff_2k.jpg",
+    displacementMap: PATH + "disp_2k.png",
+    normalMap: PATH + "nor_gl_2k.jpg",
+    armMap: PATH + "arm_2k.jpg"
   });
 
 
@@ -21,15 +21,14 @@ const DesertFloor = () => {
   return (
     
     <mesh rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-      <planeGeometry args={[300, 300, 300, 300]} />
+      <planeGeometry args={[400, 400, 400, 400]} />
       <meshStandardMaterial
+        ambientOcclusionMap={floorTexture.armMap}
         map={floorTexture.map}
         displacementMap={floorTexture.displacementMap}
-        bumpMap={floorTexture.bumpMap}
+        roughnessMap={floorTexture.armMap}
         normalMap={floorTexture.normalMap}
-        displacementScale={2}
-        // metalness={.2}
-        // roughness={.5}
+        metalnessMap={floorTexture.armMap}
       />
     </mesh>
   );

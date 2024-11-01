@@ -3,7 +3,7 @@ import { useGLTF } from '@react-three/drei'
 const CactusP = (props) => {
     const { nodes, materials } = useGLTF('/models-3d/CactusP.glb')
     return (
-      <group {...props} dispose={null} scale={20} position={[0,9,5]}>
+      <group {...props} dispose={null} scale={20}>
         <mesh
           castShadow
           receiveShadow
