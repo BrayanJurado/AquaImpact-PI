@@ -8,6 +8,7 @@ import ScarcitySection from './pages/scarcitySection';
 import AcidificationSection from './pages/acidificationSection';
 import EvaluationSection from './pages/evaluationSection';
 import IndexPol from './pages/indexPol'; 
+import Causes from './pages/causesPol'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/acidification" element={<AcidificationSection />} />
           <Route path="/evaluation" element={<EvaluationSection />} />
           <Route path="/indexPollution" element={<IndexPol />} /> 
+          <Route path="/causesPollution" element={<Causes />} /> 
         </Routes>
       </AuthProvider>
     </Router>
