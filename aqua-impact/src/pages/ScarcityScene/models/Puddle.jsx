@@ -11,10 +11,10 @@ const Puddle = (props) => {
     normalMap: PATH + "_normal.png",
   });
 
-  Object.keys(waterTexture).map((key) => {
-    waterTexture[key].wrapS = waterTexture[key].wrapT = RepeatWrapping;
-    waterTexture[key].repeat.set(64, 8);
-  });
+  // Object.keys(waterTexture).map((key) => {
+  //   waterTexture[key].wrapS = waterTexture[key].wrapT = RepeatWrapping;
+  //   waterTexture[key].repeat.set(64, 8);
+  // });
   const { nodes } = useGLTF("/models-3d/desert/Puddle.glb");
   return (
     <group {...props} dispose={null}>

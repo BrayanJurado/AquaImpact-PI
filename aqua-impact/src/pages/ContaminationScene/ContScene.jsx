@@ -8,31 +8,51 @@ import Ocean2 from "./models/Ocean2";
 
 const ContScene = () => {
   const cameraSettings = {
-    position: [-18, 500, 12],
+    position: [-18, 50, 12],
     fov: 60,
-    far: 10000,
+    far: 1000,
   };
+
+  const boatsSettings = {
+    Rowboat: [
+      { position: [-100, 8.15, -80], scale: [.2, .2, .2] },
+      { position: [100, 10, 80], scale: [.2, .2, .2] },
+      { position: [36, 3.6, 34], scale: [.2, .2, .2] },
+    ],
+    Boat: [
+      { position: [-40, 2, -30], scale: [0.06, 0.06,0.06] },
+      { position: [60, 2, 100], scale: [0.06, 0.06, 0.06] },
+      { position: [-100, 4, 140], scale: [0.06, 0.06, 0.06] },
+    ],
+  };
+
   return (
     <>
-      <div style={{ width: '100vw', height: '100vh' }}>
+      <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
-          <Ocean2/>
-          <Rowboat position={[-500, 50, -400]} />
-          <Rowboat position={[500, 50, 400]} />
-          <Rowboat position={[-500, 50, 400]} />
-          <Boat scale={[0.3, 0.3, 0.3]} position={[-200, 10, -600]}/>
-          <Boat scale={[0.3, 0.3, 0.3]} position={[300, 10, 500]} />
-          <Boat scale={[0.3, 0.3, 0.3]} position={[-500, 20, 700]} />
+          <Ocean2 />
+          {boatsSettings.Rowboat.map((settings, index) => (
+            <Rowboat
+              key={`Rowboat-${index}`}
+              position={settings.position}
+              scale={settings.scale}
+            />
+          ))}
+          {boatsSettings.Boat.map((settings, index) => (
+            <Boat
+              key={`Boat-${index}`}
+              position={settings.position}
+              scale={settings.scale}
+            />
+          ))}
           <ContainerShip
-            scale={[1000, 1000, 1000]}
-            position={[350, 150, -350]}
+            scale={[200, 200, 200]}
+            position={[70, 30, -70]}
             rotation={[0, -Math.PI / 4, 0]}
             castShadow
           />
-          <ContaminationLights/>
-          {/* <ambientLight />
-          <directionalLight position={[0, 100, -100]} /> */}
+          <ContaminationLights />
         </Canvas>
       </div>
     </>

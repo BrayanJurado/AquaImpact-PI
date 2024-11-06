@@ -5,7 +5,7 @@ import { DirectionalLightHelper } from "three";
 const ContaminationLights = () => {
     const directionalLightRef = useRef();
 
-    useHelper(directionalLightRef, DirectionalLightHelper, 150, "red");
+    useHelper(directionalLightRef, DirectionalLightHelper, 30, "red");
   
     return (
       <>
@@ -13,16 +13,16 @@ const ContaminationLights = () => {
         <directionalLight
           ref={directionalLightRef}
           color={"white"}
-          position={[0, 500, 700]}
+          position={[0, 200, 200]}
           intensity={5}
           castShadow
           shadow-mapSize={[2048, 2048]} // Aumenta si necesitas más resolución de sombra
-          shadow-camera-left={-1000}
-          shadow-camera-right={1000}
-          shadow-camera-top={1000}
-          shadow-camera-bottom={-1000}
+          shadow-camera-left={-200}
+          shadow-camera-right={200}
+          shadow-camera-top={200}
+          shadow-camera-bottom={-200}
           shadow-camera-near={1}
-          shadow-camera-far={2000}
+          shadow-camera-far={1000}
         />
       </>
     );

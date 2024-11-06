@@ -14,6 +14,8 @@ import Skeleton from "./models/Skeleton";
 import { Branch1, Branch2, Branch3, Branch4 } from "./models/TreeBranches";
 import PuddleMold from "./models/PuddleMold";
 import Puddle from "./models/Puddle";
+import WoodenSign from "./models/WoodenSign";
+import SignText from "./html/SignText";
 
 const cactusPositions = {
   barrel: [
@@ -97,8 +99,13 @@ const ScarScene = () => {
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
+          <SignText/>
+          {/* <mesh position={[0,27,0]}>
+            <boxGeometry args={[25,18,10]}/>
+          </mesh> */}
           <Staging />
           <DesertFloor />
+          <WoodenSign/>
           <PuddleMold position={[0, 2, 0]} scale={[10, 4, 10]} />
           <Puddle position={[0, .2, 0]} scale={[10, 1, 10]} />
           <Skeleton scale={1000} position={[140, 1, 5]} />
