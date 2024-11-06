@@ -5,6 +5,20 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ContaminationLights from "./lights/ContaminationLights";
 import Ocean2 from "./models/Ocean2";
+import OceanStaging from "./staging/OceanStaging";
+
+const boatsSettings = {
+  Rowboat: [
+    { position: [-100, 8.15, -80], scale: [.2, .2, .2] },
+    { position: [100, 10, 80], scale: [.2, .2, .2] },
+    { position: [36, 3.6, 34], scale: [.2, .2, .2] },
+  ],
+  Boat: [
+    { position: [-40, 2, -30], scale: [0.06, 0.06,0.06] },
+    { position: [60, 2, 100], scale: [0.06, 0.06, 0.06] },
+    { position: [-100, 4, 140], scale: [0.06, 0.06, 0.06] },
+  ],
+};
 
 const ContScene = () => {
   const cameraSettings = {
@@ -13,24 +27,12 @@ const ContScene = () => {
     far: 1000,
   };
 
-  const boatsSettings = {
-    Rowboat: [
-      { position: [-100, 8.15, -80], scale: [.2, .2, .2] },
-      { position: [100, 10, 80], scale: [.2, .2, .2] },
-      { position: [36, 3.6, 34], scale: [.2, .2, .2] },
-    ],
-    Boat: [
-      { position: [-40, 2, -30], scale: [0.06, 0.06,0.06] },
-      { position: [60, 2, 100], scale: [0.06, 0.06, 0.06] },
-      { position: [-100, 4, 140], scale: [0.06, 0.06, 0.06] },
-    ],
-  };
-
   return (
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
+          <OceanStaging/>
           <Ocean2 />
           {boatsSettings.Rowboat.map((settings, index) => (
             <Rowboat
