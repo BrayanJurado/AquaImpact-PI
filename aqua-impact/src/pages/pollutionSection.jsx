@@ -13,6 +13,9 @@ function PollutionSection() {
   const handleCloseModal = () => setModalOpen(false);
 
   const handleImageClick = () => navigate('/indexPollution'); // Redirige a /indexPollution
+  const handleButtonClick = () => {
+    navigate("/contScene");
+  };
 
   const styles = {
     navbarContainer: {
@@ -141,6 +144,7 @@ function PollutionSection() {
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
+          onClick={handleButtonClick}
         >
           EXPLORAR SOLUCIONES
         </button>

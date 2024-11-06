@@ -1,8 +1,15 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
 import EarthModel from '../components3D/earthModel'; // Ajusta la ruta según tu estructura de carpetas
+import { useNavigate } from 'react-router-dom';
 
 function ScarcitySection() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate("/scarScene");
+  };
+
   // Definir estilos en los objetos
   const styles = {
     navbarContainer: {
@@ -83,9 +90,9 @@ function ScarcitySection() {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '100%', 
-      height: '100%', 
-      pointerEvents: 'none',
+      width: '100vh', 
+      height: '100vh', 
+      pointerEvents: 'auto',
     },
   };
 
@@ -112,6 +119,7 @@ function ScarcitySection() {
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
+          onClick={handleButtonClick}
         >
           EXPLORA SOLUCIONES
         </button>

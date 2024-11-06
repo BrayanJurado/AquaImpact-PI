@@ -8,12 +8,16 @@ import ScarcitySection from './pages/scarcitySection';
 import AcidificationSection from './pages/acidificationSection';
 import EvaluationSection from './pages/evaluationSection';
 import IndexPol from './pages/indexPol'; 
+import ContScene from './pages/ContaminationScene/ContScene'
+import ScarScene from "./pages/ScarcityScene/ScarScene";
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
+          <Route path="/scarScene" element={<ScarScene/>}/>
+          <Route path="/contScene" element={<ContScene />} /> 
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}

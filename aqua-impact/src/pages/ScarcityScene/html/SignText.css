@@ -1,0 +1,17 @@
+.sign-text {
+    width: 40rem; /* Ajusta el ancho del bloque */
+    height: 28rem; /* Ajusta la altura del bloque */
+    padding: 1rem; /* Agrega algo de espacio alrededor del texto */
+    color: #000000; /* Color del texto, puedes ajustar según necesites */
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    line-height: 1.5; /* Espaciado de línea para mejor legibilidad */
+    background-color: #ececb8; /* Fondo color beige o el que prefieras para el bloque */
+    border: 2px solid #8b4513; /* Borde estilo cartel, como marrón o madera */
+    box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.3); /* Sombras para darle un efecto de relieve */
+    overflow: hidden; /* Evita que el texto sobresalga */
+    text-align: center; /* Centra el texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
