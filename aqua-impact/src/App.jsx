@@ -17,7 +17,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/scarScene" element={<ScarScene/>}/>
-          <Route path="/prueba" element={<ContScene />} /> 
+          <Route path="/contScene" element={<ContScene />} /> 
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
