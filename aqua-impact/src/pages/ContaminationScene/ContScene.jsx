@@ -4,15 +4,14 @@ import { OrbitControls, Html } from "@react-three/drei";
 import Boat from "./models/Boat";
 import Rowboat from "./models/Rowboat";
 import ContainerShip from "./models/ContainerShip";
-import Plastic from "./models/Plastic";  // Importa el modelo de plástico
-import Oil from "./models/Oil";  // Importa el modelo de petróleo
-import Trash from "./models/Trash";  // Importa el modelo de basura
-import PileTrash from "./models/PileTrash";  // Importa el modelo de pila de basura
-import ContaminationLights from "./lights/ContaminationLights"; // Importa las luces de contaminación
+import Plastic from "./models/Plastic";  
+import Oil from "./models/Oil";  
+import Trash from "./models/Trash";  
+import PileTrash from "./models/PileTrash";  
+import ContaminationLights from "./lights/ContaminationLights"; 
 import Ocean2 from "./models/Ocean2";
 import OceanStaging from "./staging/OceanStaging";
 
-// Importar las imágenes de la forma solicitada
 import leftClickImage from "../../assets/images/click.png";
 import rightArrowImage from "../../assets/images/tecla.png";
 
@@ -69,14 +68,14 @@ const cameraSettings = {
 };
 
 const labelsPositions = [
-  [-150, 25, 30], // Cámara principal
-  [77, 0, 110], // Cámara Plástico
-  [-120, 5, -40], // Cámara derrame de petróleo
-  [-35, 15, -140], // Cámara Pila de basura
+  [-150, 25, 30], 
+  [77, 0, 110], 
+  [-120, 5, -40], 
+  [-35, 15, -140], 
 ];
 
 const CameraControl = ({ currentIndex }) => {
-  const { camera } = useThree(); // Obtener la cámara desde el contexto de R3F
+  const { camera } = useThree(); 
 
   const moveCameraToLabel = (index) => {
     const position = labelsPositions[index];
@@ -85,7 +84,7 @@ const CameraControl = ({ currentIndex }) => {
   };
 
   useEffect(() => {
-    moveCameraToLabel(currentIndex); // Mueve la cámara al índice de la etiqueta
+    moveCameraToLabel(currentIndex); 
   }, [currentIndex, camera]);
 
   return null;
@@ -93,19 +92,19 @@ const CameraControl = ({ currentIndex }) => {
 
 const ContScene = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [showModal, setShowModal] = useState(true); // Estado para controlar la visibilidad del modal
+  const [showModal, setShowModal] = useState(true); 
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length); // Avanzar al siguiente índice
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length); 
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown); // Limpiar el evento cuando el componente se desmonta
+      window.removeEventListener("keydown", handleKeyDown); 
     };
   }, []); 
 
@@ -115,29 +114,27 @@ const ContScene = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      {/* Modal Tutorial */}
+
       {showModal && (
   <div style={{
-    position: "absolute", top: "0", left: "0", width: "100%", height: "100%", backgroundColor: "rgba(22, 40, 74, 0.8)", // Fondo de la modal con color #16284A y opacidad
+    position: "absolute", top: "0", left: "0", width: "100%", height: "100%", backgroundColor: "rgba(22, 40, 74, 0.8)", 
     display: "flex", justifyContent: "center", alignItems: "center", zIndex: "1000"
   }}>
     <div style={{
-      backgroundColor: "rgba(22, 40, 74, 0.9)", // Fondo de la modal con color #16284A y mayor opacidad
+      backgroundColor: "rgba(22, 40, 74, 0.9)", 
       padding: "20px", borderRadius: "10px", maxWidth: "600px", textAlign: "center", width: "100%"
     }}>
       <h2>¡Bienvenido!</h2>
       
-      {/* Línea separatoria ocupando todo el ancho */}
       <hr style={{ border: "1px solid #fff", margin: "20px 0", width: "100%" }} />
 
       <p style={{ marginBottom: "20px" }}>
         Explora la escena mantiendo el click izquierdo y navega entre las diferentes causas de la contaminación a través de la tecla.
       </p>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
-        {/* Imagen del click izquierdo con mayor transparencia y color blanco */}
+
         <img src={leftClickImage} alt="Click izquierdo" style={{ width: "120px", marginRight: "20px", opacity: 0.6, filter: "brightness(0) saturate(100%)" }} />
-        
-        {/* Imagen de la tecla derecha más ancha */}
+
         <img src={rightArrowImage} alt="Tecla derecha" style={{ width: "200px", height: "auto" }} />
       </div>
       <button onClick={closeModal} style={{
@@ -147,13 +144,11 @@ const ContScene = () => {
   </div>
 )}
 
-
       <Canvas shadows camera={cameraSettings}>
-        <OrbitControls enableZoom={false} /> {/* Desactivar el zoom para evitar interferencias con el movimiento manual */}
+        <OrbitControls enableZoom={false} /> 
         <OceanStaging />
         <Ocean2 />
 
-        {/* Renderiza los botes */}
         {boatsSettings.Rowboat.map((settings, index) => (
           <Rowboat key={`Rowboat-${index}`} position={settings.position} scale={settings.scale} />
         ))}
@@ -162,12 +157,10 @@ const ContScene = () => {
         ))}
         <ContainerShip scale={[200, 200, 200]} position={[70, 30, -70]} rotation={[0, -Math.PI / 4, 0]} castShadow />
 
-        {/* Renderiza los modelos de plástico */}
         {plasticsSettings.map((settings, index) => (
           <Plastic key={`Plastic-${index}`} position={settings.position} scale={settings.scale} />
         ))}
 
-        {/* Mostrar solo el h1 sobre el segundo modelo de plástico */}
         <Html position={[plasticsSettings[1].position[0], plasticsSettings[1].position[1] + 6, plasticsSettings[1].position[2]]} distanceFactor={10}>
           <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 40px", borderRadius: "5px", maxWidth: "500px", textAlign: "center", lineHeight: "1.5" }}>
             <h1 style={{ fontSize: "1.5em", margin: "0" }}>Plástico</h1>
@@ -177,12 +170,10 @@ const ContScene = () => {
           </div>
         </Html>
 
-        {/* Renderiza los modelos de petróleo */}
         {oilSettings.map((settings, index) => (
           <Oil key={`Oil-${index}`} position={settings.position} scale={settings.scale} />
         ))}
 
-        {/* Mostrar solo el h1 sobre el primer modelo de petróleo */}
         <Html position={[oilSettings[0].position[0], oilSettings[0].position[1] + 16, oilSettings[0].position[2]]} distanceFactor={10}>
           <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 20px", borderRadius: "5px", maxWidth: "100%", textAlign: "center", lineHeight: "1.5" }}>
             <h1 style={{ fontSize: "2.5em", margin: "0" }}>Derrame de petróleo</h1>
@@ -192,17 +183,14 @@ const ContScene = () => {
           </div>
         </Html>
 
-        {/* Renderiza los modelos de basura */}
         {trashSettings.map((settings, index) => (
           <Trash key={`Trash-${index}`} position={settings.position} scale={settings.scale} />
         ))}
 
-        {/* Renderiza las pilas de basura */}
         {pileTrashSettings.map((settings, index) => (
           <PileTrash key={`PileTrash-${index}`} position={settings.position} scale={settings.scale} />
         ))}
 
-        {/* Mostrar solo el h1 sobre el primer modelo de pila de basura */}
         <Html position={[pileTrashSettings[2].position[0], pileTrashSettings[2].position[1] + 25, pileTrashSettings[2].position[2]]} distanceFactor={10}>
           <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 20px", borderRadius: "5px", maxWidth: "500px", textAlign: "center", lineHeight: "1.5" }}>
             <h1 style={{ fontSize: "2.5em", margin: "0" }}>Pilas de Basura</h1>
@@ -211,11 +199,7 @@ const ContScene = () => {
             </p>
           </div>
         </Html>
-
-        {/* Componente que controla la cámara */}
         <CameraControl currentIndex={currentIndex} />
-
-        {/* Luces de contaminación */}
         <ContaminationLights />
       </Canvas>
     </div>
