@@ -5,7 +5,6 @@ import { degToRad } from "three/src/math/MathUtils.js";
 import { MeshReflectorMaterial } from "@react-three/drei"; 
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
-// Define el modelo de contaminación
 const PollutionModel = () => {
   const gltf = useGLTF("/models/pollution.glb");
   return (
@@ -42,10 +41,9 @@ const Causes = () => {
 
         <CameraControls ref={controls} />
 
-        {/* Texto 3D alineado al centro, desplazado hacia la izquierda */}
         <Text
           font={"fonts/Poppins-Black.ttf"}
-          position={[-2.0, 0.6, 0]} // Ajusta la posición Y para el texto
+          position={[-2.0, 0.6, 0]} 
           lineHeight={0.8}
           textAlign="center"
           fontSize={0.7}
@@ -55,16 +53,13 @@ const Causes = () => {
           SOLUCIONES{"\n"}CONTAMINACIÓN
           <meshBasicMaterial color="white" />
         </Text>
-
-        {/* Modelo de contaminación */}
         <group>
           <Suspense fallback={null}>
             <PollutionModel />
           </Suspense>
         </group>
 
-        {/* Plano reflector para el efecto de reflejo */}
-        <mesh position-y={0.6} rotation-x={-Math.PI / 2}> {/* Ajusta la posición Y aquí para desplazar el reflejo hacia arriba */}
+        <mesh position-y={0.6} rotation-x={-Math.PI / 2}>
           <planeGeometry args={[100, 100]} />
           <MeshReflectorMaterial
             blur={[100, 100]}
@@ -73,12 +68,12 @@ const Causes = () => {
             mixStrength={10}
             roughness={1}
             depthScale={1}
-            opacity={0.4} // Haz el plano completamente transparente
+            opacity={0.4} 
             transparent
             minDepthThreshold={0.4}
             maxDepthThreshold={1.4}
-            color="#333" // Color de fondo, puedes ajustarlo si es necesario
-            metalness={0.5} // Ajusta la metalidad si lo deseas
+            color="#333" 
+            metalness={0.5} 
           />
         </mesh>
 

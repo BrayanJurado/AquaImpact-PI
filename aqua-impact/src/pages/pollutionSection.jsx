@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import EarthModel from '../components3D/earthModel';
-import indexImage from '../assets/images/index.png'; // Ajusta la ruta si es necesario
+import indexImage from '../assets/images/index.png'; 
 
 function PollutionSection() {
   const navigate = useNavigate();
@@ -11,10 +11,10 @@ function PollutionSection() {
   const handleOpenModal = () => setModalOpen(true);
   const handleCloseModal = () => setModalOpen(false);
 
-  const handleImageClick = () => navigate('/indexPollution'); // Redirige a /indexPollution
+  const handleImageClick = () => navigate('/indexPollution'); 
 
   const handleButtonClick = () => {
-    navigate("/causesPollution"); // Redirige a /contScene
+    navigate("/causesPollution"); 
   };
 
   const styles = {
@@ -46,7 +46,7 @@ function PollutionSection() {
       width: '70px',
       height: '70px',
       marginRight: '10px',
-      cursor: 'pointer', // Cambia el cursor al pasar sobre la imagen
+      cursor: 'pointer', 
     },
     titleText: {
       color: '#fff',
@@ -144,7 +144,7 @@ function PollutionSection() {
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
-          onClick={handleButtonClick} // Redirige a /contScene
+          onClick={handleButtonClick} 
         >
           SOLUCIONES
         </button>
