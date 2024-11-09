@@ -1,4 +1,3 @@
-// PollutionSection.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
@@ -13,8 +12,9 @@ function PollutionSection() {
   const handleCloseModal = () => setModalOpen(false);
 
   const handleImageClick = () => navigate('/indexPollution'); // Redirige a /indexPollution
+
   const handleButtonClick = () => {
-    navigate("/contScene");
+    navigate("/causesPollution"); // Redirige a /contScene
   };
 
   const styles = {
@@ -144,9 +144,9 @@ function PollutionSection() {
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
-          onClick={handleButtonClick}
+          onClick={handleButtonClick} // Redirige a /contScene
         >
-          EXPLORAR SOLUCIONES
+          SOLUCIONES
         </button>
       </div>
 
