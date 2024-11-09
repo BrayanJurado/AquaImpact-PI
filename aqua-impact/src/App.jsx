@@ -8,13 +8,17 @@ import ScarcitySection from './pages/scarcitySection';
 import AcidificationSection from './pages/acidificationSection';
 import EvaluationSection from './pages/evaluationSection';
 import IndexPol from './pages/indexPol'; 
-import Causes from './pages/causesPol'
+import Causes from './pages/causesPol'; 
+import ContScene from './pages/ContaminationScene/ContScene'; 
+import ScarScene from "./pages/ScarcityScene/ScarScene"; 
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
+          <Route path="/scarScene" element={<ScarScene />} /> 
+          <Route path="/contScene" element={<ContScene />} />
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
@@ -23,7 +27,7 @@ function App() {
           <Route path="/acidification" element={<AcidificationSection />} />
           <Route path="/evaluation" element={<EvaluationSection />} />
           <Route path="/indexPollution" element={<IndexPol />} /> 
-          <Route path="/causesPollution" element={<Causes />} /> 
+          <Route path="/causesPollution" element={<Causes />} /> {/* Ruta de Causes */}
         </Routes>
       </AuthProvider>
     </Router>
