@@ -14,7 +14,7 @@ function PollutionSection() {
   const handleImageClick = () => navigate('/indexPollution'); // Redirige a /indexPollution
 
   const handleButtonClick = () => {
-    navigate("/contScene"); // Redirige a /contScene
+    navigate("/causesPollution"); // Redirige a /contScene
   };
 
   const styles = {
@@ -146,7 +146,7 @@ function PollutionSection() {
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
           onClick={handleButtonClick} // Redirige a /contScene
         >
-          CAUSAS Y SOLUCIONES
+          SOLUCIONES
         </button>
       </div>
 

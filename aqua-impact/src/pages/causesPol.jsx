@@ -2,9 +2,8 @@ import React, { Suspense, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { CameraControls, Environment, RenderTexture, Text, useGLTF } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils.js";
-import { MeshReflectorMaterial } from "@react-three/drei"; // Asegúrate de importar el material reflector
+import { MeshReflectorMaterial } from "@react-three/drei"; 
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
-
 
 // Define el modelo de contaminación
 const PollutionModel = () => {
@@ -12,12 +11,11 @@ const PollutionModel = () => {
   return (
     <primitive
       object={gltf.scene}
-      scale={0.2} // Tamaño del modelo
-      position={[2.5, -1, 0]} // Posición del modelo
+      scale={0.2}
+      position={[2.5, -1, 0]} 
     />
   );
 };
-
 
 const Causes = () => {
   const controls = useRef();
@@ -42,7 +40,6 @@ const Causes = () => {
           <Bloom mipmapBlur intensity={1.2} />
         </EffectComposer>
 
-
         <CameraControls ref={controls} />
 
         {/* Texto 3D alineado al centro, desplazado hacia la izquierda */}
@@ -55,7 +52,7 @@ const Causes = () => {
           rotation-y={degToRad(25)}
           anchorY={"bottom"}
         >
-          CAUSAS{"\n"}CONTAMINACIÓN
+          SOLUCIONES{"\n"}CONTAMINACIÓN
           <meshBasicMaterial color="white" />
         </Text>
 
