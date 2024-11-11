@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ContaminationLights from "./lights/ContaminationLights";
 import Ocean2 from "./models/Ocean2";
-import OceanStaging from "./staging/OceanStaging";
+// import OceanStaging from "./staging/OceanStaging";
 
 const boatsSettings = {
   Rowboat: [
@@ -32,7 +32,7 @@ const ContScene = () => {
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
-          <OceanStaging/>
+          {/* <OceanStaging/> */}
           <Ocean2 />
           {boatsSettings.Rowboat.map((settings, index) => (
             <Rowboat
