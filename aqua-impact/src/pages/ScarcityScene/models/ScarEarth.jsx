@@ -9,16 +9,17 @@ const ScarEarth = (props) => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
+    document.body.style.cursor = "auto";
     navigate("/scarScene");
   };
 
-  const handlePointerOver = () => {
-    document.body.style.cursor = 'pointer';
-  };
+  // const handlePointerOver = () => {
+  //   document.body.style.cursor = 'pointer';
+  // };
   
-  const handlePointerOut = () => {
-    document.body.style.cursor = 'none';
-  };
+  // const handlePointerOut = () => {
+  //   document.body.style.cursor = 'none';
+  //};
 
   return (
     <group {...props} dispose={null}>
@@ -40,8 +41,8 @@ const ScarEarth = (props) => {
         rotation={[-0.137, -0.15, -1.18]}
         scale={.0001}
         onClick={handleButtonClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       />
       <mesh
         castShadow
@@ -52,8 +53,8 @@ const ScarEarth = (props) => {
         rotation={[0.087, 1.243, -0.826]}
         scale={.0001}
         onClick={handleButtonClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       />
       <mesh
         castShadow
@@ -64,8 +65,8 @@ const ScarEarth = (props) => {
         rotation={[-0.859, -0.879, -2.5]}
         scale={.0001}
         onClick={handleButtonClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       />
       <mesh
         castShadow
@@ -76,8 +77,8 @@ const ScarEarth = (props) => {
         rotation={[-2.6, 0.6, 0.8]}
         scale={0.0001}
         onClick={handleButtonClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       />
       <mesh
         castShadow
@@ -88,8 +89,8 @@ const ScarEarth = (props) => {
         rotation={[1.15, -0.75, 0.3]}
         scale={.0001}
         onClick={handleButtonClick}
-        onPointerOver={handlePointerOver}
-        onPointerOut={handlePointerOut}
+        onPointerOver={() => (document.body.style.cursor = "pointer")}
+        onPointerOut={() => (document.body.style.cursor = "auto")}
       />
     </group>
   )
