@@ -1,8 +1,20 @@
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef, useEffect } from 'react';
+import { useGLTF } from '@react-three/drei';
+import { useFrame } from '@react-three/fiber';
 
 const ContainerShip = (props) => {
-  const { nodes, materials } = useGLTF('/models-3d/ContainerShip.glb')
+  const { nodes, materials } = useGLTF('/models-3d/ContainerShip.glb');
+
+  const group = useRef();
+
+  const moveSpeed = 0.005; 
+
+  useFrame(() => {
+    if (group.current) {
+      group.current.position.z = Math.sin(Date.now() * moveSpeed) * 2; 
+
+    }
+  });
   return (
     <group {...props} dispose={null}>
       <mesh
