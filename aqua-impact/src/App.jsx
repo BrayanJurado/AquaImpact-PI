@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/scarScene" element={<ScarScene />} /> 
           <Route path="/contScene" element={<ContScene />} />
-          <Route path="/acidScene" element={<acidScene />} />
+          <Route path="/acidScene" element={<AcidScene />} /> 
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}

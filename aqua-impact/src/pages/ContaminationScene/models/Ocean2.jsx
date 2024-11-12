@@ -13,10 +13,6 @@ const Ocean2 = (props) => {
     normalMap: PATH + "_normal.png",
   });
 
-  // Object.keys(waterTexture).map((key) => {
-  //   waterTexture[key].wrapS = waterTexture[key].wrapT = RepeatWrapping;
-  //   waterTexture[key].repeat.set(16, 16);
-  // });
   return (
     <group {...props} dispose={null}>
       <mesh castShadow receiveShadow geometry={nodes.Node.geometry} scale={.2}>
