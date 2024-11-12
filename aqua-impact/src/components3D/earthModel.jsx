@@ -38,7 +38,7 @@ const EarthModel = () => {
   const pileTrashPosition = latLonToSphere(lat, lon, globeScale, offset);
 
   const handleClick = () => {
-    navigate('/contScene'); 
+    navigate('/acidScene'); 
   };
 
   const handlePointerOver = () => {
