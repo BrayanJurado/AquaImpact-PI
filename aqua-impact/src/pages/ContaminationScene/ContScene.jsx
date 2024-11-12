@@ -15,15 +15,15 @@ import OceanStaging from "./staging/OceanStaging";
 import leftClickImage from "../../assets/images/click.png";
 import rightArrowImage from "../../assets/images/tecla.png";
 
+import Sound from "../../../public/sounds/sound.mp3"; // audio
+
 const boatsSettings = {
   Rowboat: [
-    { position: [-100, 8.15, -80], scale: [.2, .2, .2] },
-    { position: [100, 10, 80], scale: [.2, .2, .2] },
-    { position: [36, 3.6, 34], scale: [.2, .2, .2] },
+    { position: [-80, 7.2, 10], scale: [.2, .2, .2] },
+    { position: [150, 3, 30], scale: [.2, .2, .2] },
   ],
   Boat: [
-    { position: [-40, 2, -30], scale: [0.06, 0.06, 0.06] },
-    { position: [60, 2, 100], scale: [0.06, 0.06, 0.06] },
+    { position: [10, 4, 55], scale: [0.06, 0.06, 0.06] },
     { position: [-100, 4, 140], scale: [0.06, 0.06, 0.06] },
   ],
 };
@@ -44,7 +44,7 @@ const plasticsSettings = [
 ];
 
 const oilSettings = [
-  { position: [-100, 5, -20], scale: [5.5, 5.5, 5.5] },
+  { position: [-100, 6, -20], scale: [5.5, 5.5, 5.5] },
   { position: [80, 7.8, 130], scale: [5.5, 5.5, 5.5] },
   { position: [40, 6.5, 60], scale: [5.5, 5.5, 5.5] },
 ];
@@ -93,6 +93,17 @@ const CameraControl = ({ currentIndex }) => {
 const ContScene = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showModal, setShowModal] = useState(true); 
+
+  useEffect(() => {
+    const audio = new Audio(Sound);
+    audio.loop = true; // Para que el audio se repita automáticamente
+    audio.play();
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0; // Resetea el audio al desmontar el componente
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
