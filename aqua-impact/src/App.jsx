@@ -11,6 +11,7 @@ import IndexPol from './pages/indexPol';
 import Causes from './pages/causesPol'; 
 import ContScene from './pages/ContaminationScene/ContScene'; 
 import ScarScene from "./pages/ScarcityScene/ScarScene"; 
+import AcidScene from './pages/AcidificationScene/AcidScene';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/scarScene" element={<ScarScene />} /> 
           <Route path="/contScene" element={<ContScene />} />
+          <Route path="/acidScene" element={<AcidScene />} /> 
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
           <Route path="/" element={<LoginRegister />} /> {/* Ruta por defecto */}
