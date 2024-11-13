@@ -1,7 +1,9 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import EarthModel from '../components3D/earthModel'; // Ajusta la ruta según tu estructura de carpetas
 import { useNavigate } from 'react-router-dom';
+import ScarEarth from './ScarcityScene/models/ScarEarth';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei'
 
 function ScarcitySection() {
   const navigate = useNavigate();
@@ -127,7 +129,12 @@ function ScarcitySection() {
 
       {/* Renderiza el modelo de la Tierra */}
       <div style={styles.earthModelContainer}>
-        <EarthModel />
+        <Canvas>
+          <ambientLight intensity={2} />
+          <OrbitControls enableZoom={false} enablePan={false} />
+          {/* <Environment preset='sunset' /> */}
+          <ScarEarth scale ={2.5} />
+        </Canvas>
       </div>
     </div>
   );
