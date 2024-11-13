@@ -1,6 +1,9 @@
 import React from 'react';
 import { Navbar } from '../components/Navbar';
-import EarthModel from '../components3D/earthModel';
+import { Canvas } from '@react-three/fiber';
+import AcidEarth from './AcidificationScene/models/AcidEarth';
+import { OrbitControls } from '@react-three/drei';
+import { AmbientLight } from 'three';
 
 function AcidificationSection() {
   // Definir estilos en los objetos
@@ -116,9 +119,9 @@ function AcidificationSection() {
         </button>
       </div>
 
-      {/* Renderiza el modelo de la Tierra */}
+      
       <div style={styles.earthModelContainer}>
-        <EarthModel />
+        <AcidEarth/>
       </div>
     </div>
   );
