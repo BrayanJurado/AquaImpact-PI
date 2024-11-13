@@ -9,12 +9,12 @@ const Sequia = (props) => {
 // Animación de rotación continua
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.01; // Rota en el eje Y
+      modelRef.current.rotation.y += 0.001; // Rota en el eje Y
     }
   });
 
   return (
-    <group {...props} dispose={null} scale={[0.0010, 0.0010, 0.0010]} position={[0, -2.5, 0]} ref={modelRef}>
+    <group {...props} dispose={null} scale={[0.0015, 0.0010, 0.0015]} position={[0, -2.5, 0]} ref={modelRef}>
       {/* Escala reducida a [0.1, 0.1, 0.1] para hacer el modelo más pequeño */}
       <mesh geometry={nodes.Object_2.geometry} material={materials['rastMat.001']} rotation={[-Math.PI / 2, 0, 0]} />
     </group>
