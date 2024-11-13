@@ -165,7 +165,7 @@ const AcidScene = () => {
 )}
 
       <Canvas camera={cameraSettings}>
-        <OrbitControls enableZoom={true} enableRotate={true} enableDamping={true} enablePan={true} /> 
+        <OrbitControls enableZoom={false} enableRotate={true} enableDamping={false} enablePan={false} /> 
         <ambientLight intensity={0.5}/>
         <UnderwaterLights/>
         <UnderwaterStaging />
