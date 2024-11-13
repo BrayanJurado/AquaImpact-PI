@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
-import Oil from "../ContaminationScene/models/Oil";  
 
 import UnderwaterLights from './lights/UnderwaterLigths';
 import Waterplant2 from './models/Waterplant2';
@@ -12,16 +11,15 @@ import UnderwaterStaging from './staging/UnderwaterStaging';
 import Fishes from './models/Fishes';
 import Fishes2 from './models/Fishes2';
 import Smallrocks from './models/Smallrocks';
+import Starfish from './models/Starfish';
 import Waterplant from './models/Waterplant';
 import leftClickImage from "../../assets/images/click.png";
 import buttonsImage from "../../assets/images/teclas.png";
 import Seaweed from './models/Seaweed';
 
+// Implementacion de mouse para vista:
 
 
-const oilSettings = [
-  { position: [-70, 0, -20], scale: [5.5, 5.5, 5.5] }, //Spot 1
-];
 
 const Coral1Settings = [
   { position: [300, -1.5, 180], scale: [6.5, 6.5, 6.5] }, //Spot 2
@@ -30,6 +28,7 @@ const Coral1Settings = [
   { position: [350, -10, 220], scale: [6.5, 6.5, 6.5] }, //Spot 2
   { position: [310, 3.5 , 150], scale: [6.5, 6.5, 6.5] }, //Spot 2
   { position: [350, -0.5 , 160], scale: [6.5, 6.5, 6.5] }, //Spot 2
+  { position: [240, 50, -230], scale: [4.2, 4.2, 4.2] }, //Spot de peces
 ];
 
 const Coral2Settings = [
@@ -38,11 +37,15 @@ const Coral2Settings = [
   { position: [260, -0.5, 250], scale: [10.5, 10.5, 10.5] }, //Spot 2
   { position: [320, -3.5, 210], scale: [3.5, 3.5, 3.5] }, //Spot 2
   { position: [320, -2.5, 160], scale: [9.5, 9.5, 9.5] }, //Spot 2
+  { position: [280, 39, -180], scale: [7.5, 7.5, 7.5] }, //Spot de animalitos
 ];
+
+const StarfishSettings = [
+  { position: [250, 51, -270], scale: [1.2, 1.2, 1.2] },
+]
 
 const FishesSettings = [
   { position: [260, 60, -250], scale: [6.5, 6.5, 6.5] },
-  // { position: [260, 80, -250], scale: [6.5, 6.5, 6.5] },
 ]
 
 const FishesSettings2 = [
@@ -72,6 +75,7 @@ const WaterplantSettings2 = [
 
 const SmallrocksSettings = [
   { position: [270, 48, -230], scale: [5.5, 5.5, 5.5] },
+  { position: [200, 46, -240], scale: [25.5, 25.5, 25.5] },
 ]
 
 const cameraSettings = {
@@ -82,8 +86,7 @@ const cameraSettings = {
 
 
 const labelsPositions = [
-  [-180, 20, 200], //Posición principal
-  [-120, 15, -40], //Posición texto Spot Gasolina
+  // [-180, 20, 200], //Posición principal
   [345, 7, 220], //Posición texto Spot Corales
   [270, 68, -290], //Posición texto Spot Peces
 ];
@@ -110,22 +113,13 @@ const AcidScene = () => {
 
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === "ArrowRight") {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length); 
+      if (event.key === "ArrowRight" || event.key === "ArrowUp") {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length);
       }
-      if (event.key === "ArrowUp") {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length); 
-      }
-      
-      if (event.key === "ArrowLeft") {
+      if (event.key === "ArrowLeft" || event.key === "ArrowDown") {
         setCurrentIndex((prevIndex) => (prevIndex - 1 + labelsPositions.length) % labelsPositions.length);
       }
-      
-      if (event.key === "ArrowDown") {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + labelsPositions.length) % labelsPositions.length);
-      }
-    };
-    
+    };    
 
     window.addEventListener("keydown", handleKeyDown);
 
@@ -155,7 +149,7 @@ const AcidScene = () => {
       <hr style={{ border: "1px solid #fff", margin: "20px 0", width: "100%" }} />
 
       <p style={{ marginBottom: "20px" }}>
-        Explora la escena mantiendo el click izquierdo y navega entre las diferentes causas de la contaminación a través de las teclas.
+        Explora la escena mantiendo el click izquierdo y navega entre las diferentes causas de la acidificación a través de las teclas.
       </p>
       <div style={{ display: "flex", justifyContent: "center", marginBottom: "20px" }}>
 
@@ -170,79 +164,70 @@ const AcidScene = () => {
   </div>
 )}
 
-      <Canvas shadows camera={cameraSettings}>
-        <OrbitControls enableZoom={true} /> 
+      <Canvas camera={cameraSettings}>
+        <OrbitControls enableZoom={true} enableRotate={true} enableDamping={true} enablePan={true} /> 
+        <ambientLight intensity={0.5}/>
+        <UnderwaterLights/>
         <UnderwaterStaging />
         <Arena />  
-        
-
-      
-        {oilSettings.map((settings, index) => (
-          <Oil key={`Oil-${index}`} position={settings.position} scale={settings.scale} />
-        ))}
-
-        <Html position={[oilSettings[0].position[0], oilSettings[0].position[1] + 16, oilSettings[0].position[2]]} distanceFactor={10}>
-          <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 20px", borderRadius: "5px", maxWidth: "100%", textAlign: "center", lineHeight: "1.5" }}>
-            <h1 style={{ fontSize: "2.5em", margin: "0" }}>Derrame de petróleo</h1>
-            <p style={{ fontSize: "2.0em", margin: "10px 100px", wordWrap: 'normal' }}>
-              Alrededor de 1 millón de toneladas de petróleo acaban en los océanos anualmente debido a accidentes, actividades ilegales y otros factores.
-            </p>
-          </div>
-        </Html>
 
         {Coral1Settings.map((settings, index) => (
-          <Coral1 key={`Oil-${index}`} position={settings.position} scale={settings.scale} />
+          <Coral1 key={`Coral-${index}`} position={settings.position} scale={settings.scale} />
         ))}
+
         {Coral2Settings.map((settings, index) => (
-          <Coral2 key={`Oil-${index}`} position={settings.position} scale={settings.scale} />
+          <Coral2 key={`Coral-${index}`} position={settings.position} scale={settings.scale} />
         ))}
 
-        <Html position={[Coral2Settings[0].position[0], Coral2Settings[0].position[1] + 16, Coral2Settings[0].position[2]]} distanceFactor={10}>
-          <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 20px", borderRadius: "5px", maxWidth: "100%", textAlign: "center", lineHeight: "1.5" }}>
-            <h1 style={{ fontSize: "5.5em", margin: "0" }}>Derrame de petróleo</h1>
-            <p style={{ fontSize: "5.0em", margin: "10px 100px", wordWrap: 'normal' }}>
-              Alrededor de 1 millón de toneladas de petróleo acaban en los océanos anualmente debido a accidentes, actividades ilegales y otros factores.
-            </p>
-          </div>
-        </Html>
-
-      
         {FishesSettings.map((settings, index) => (
-          <Fishes key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Fishes key={`Fishes-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
 
         {FishesSettings2.map((settings, index) => (
-          <Fishes2 key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Fishes2 key={`Fishes-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
 
         {SeaweedSettings.map((settings, index) => (
-          <Seaweed key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Seaweed key={`Seaweed-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
 
         {WaterplantSettings.map((settings, index) => (
-          <Waterplant key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Waterplant key={`Waterplant-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
 
         {SmallrocksSettings.map((settings, index) => (
-          <Smallrocks key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Smallrocks key={`Smallrocks-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
 
-
+        {StarfishSettings.map((settings, index) => (
+          <Starfish key={`Starfish-${index}`} position={settings.position} scale={settings.scale}  />
+        ))}
 
         {WaterplantSettings2.map((settings, index) => (
-          <Waterplant2 key={`Oil-${index}`} position={settings.position} scale={settings.scale}  />
+          <Waterplant2 key={`Waterplant-${index}`} position={settings.position} scale={settings.scale}  />
         ))}
-        <Html position={[FishesSettings[0].position[0], FishesSettings[0].position[1] + 16, FishesSettings[0].position[2]]} distanceFactor={10}>
-          <div style={{ backgroundColor: "rgba(22, 40, 74, 0.9)", color: "white", padding: "10px 20px", borderRadius: "5px", maxWidth: "100%", textAlign: "center", lineHeight: "1.5" }}>
-            <h1 style={{ fontSize: "2.5em", margin: "0" }}>Derrame de petróleo</h1>
-            <p style={{ fontSize: "2.0em", margin: "10px 100px", wordWrap: 'normal' }}>
-              Alrededor de 1 millón de toneladas de petróleo acaban en los océanos anualmente debido a accidentes, actividades ilegales y otros factores.
+
+        {/* Texto Html del Spot de peces */}
+        <Html position={[FishesSettings[0].position[0] + 15, FishesSettings[0].position[1] + 17.5, FishesSettings[0].position[2] - 12.5]} distanceFactor={10}>
+          <div style={{ backgroundColor: "rgba(55, 255, 0, 0.3)", color: "white", padding: "20px 20px", borderRadius: "20px", width: "60vw", maxWidth: "1000px", lineHeight: "1.5", whiteSpace: "normal", height: "auto" }}>
+            <h1 style={{ fontSize: "2.5em", margin: "0", textAlign: "center" }}>Afectación de Fauna</h1>
+            <p style={{ fontSize: "2em", margin: "10px auto", textAlign: "justify", wordWrap: 'break-word', maxWidth: "1000px" }}>
+            La acidificación del océano afecta a los peces alterando su desarrollo, comportamiento y reproducción, dificultando que encuentren comida, eviten depredadores y se orienten. Además, perjudica a organismos calcáreos como corales y plancton, esenciales en la cadena alimentaria marina.
+            </p>
+          </div>
+        </Html>
+
+        {/* Texto Html de la seccion de corales */}
+        <Html position={[Coral2Settings[0].position[0] +46.5, Coral2Settings[0].position[1] + 21.2, Coral2Settings[0].position[2] + 57]} distanceFactor={10}>
+          <div style={{ backgroundColor: "rgba(55, 255, 0, 0.3)", color: "white", padding: "20px 20px", borderRadius: "20px", width: "64vw", maxWidth: "1000px", lineHeight: "1.5", whiteSpace: "normal", height: "auto" }}>
+            <h1 style={{ fontSize: "2.5em", margin: "10px", textAlign: "center" }}>Afectación de Corales</h1>
+            <p style={{ fontSize: "2em", margin: "10px auto", wordWrap: 'break-word', maxWidth: "1000px", textAlign: "justify" }}>
+            La acidificación del océano daña los corales al debilitar su capacidad para construir sus esqueletos de carbonato de calcio, volviéndolos más frágiles y vulnerables. Esta pérdida de estructura afecta a muchas especies marinas que dependen de los arrecifes como refugio y fuente de alimento. Además, los corales enfrentan dificultades para crecer y recuperarse, lo que impacta la biodiversidad y reduce la protección que estos ecosistemas ofrecen a las costas frente a tormentas y erosión.
             </p>
           </div>
         </Html>
 
         <CameraControl currentIndex={currentIndex} />
-        <UnderwaterLights />
       </Canvas>
     </div>
   );
