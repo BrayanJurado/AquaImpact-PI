@@ -42,6 +42,8 @@ const Coral2Settings = [
 
 const StarfishSettings = [
   { position: [250, 51, -270], scale: [1.2, 1.2, 1.2] },
+  //Posicion inicial
+  { position: [-160, -30, 150], scale: [1.2, 1.2, 1.2] },
 ]
 
 const FishesSettings = [
@@ -63,6 +65,14 @@ const SeaweedSettings = [
   { position: [270, 43, -240], scale: [6.5, 22.5, 6.5] },
   { position: [270, 40, -200], scale: [6.5, 22.5, 6.5] },
   { position: [260, 42, -239], scale: [6.5, 22.5, 6.5] },
+  //Posición ppal
+  { position: [-150, -30, 150], scale: [10, 28, 10] },
+  { position: [-150, -30, 130], scale: [10, 28, 10] },
+  { position: [-135, -30, 130], scale: [10, 28, 10] },
+  { position: [-135, -30, 130], scale: [10, 28, 10] },
+  { position: [-100, -30, 190], scale: [10, 28, 10] },
+  { position: [-90, -30, 160], scale: [10, 28, 10] },
+  { position: [-90, -30, 175], scale: [10, 28, 10] },
 ]
 
 const WaterplantSettings = [
@@ -76,6 +86,8 @@ const WaterplantSettings2 = [
 const SmallrocksSettings = [
   { position: [270, 48, -230], scale: [5.5, 5.5, 5.5] },
   { position: [200, 46, -240], scale: [25.5, 25.5, 25.5] },
+  //Posición ppal
+  { position: [-70, -38, 200], scale: [25.5, 25.5, 25.5] },
 ]
 
 const cameraSettings = {
@@ -86,7 +98,7 @@ const cameraSettings = {
 
 
 const labelsPositions = [
-  // [-180, 20, 200], //Posición principal
+  [-180, -15, 200], //Posición principal
   [345, 7, 220], //Posición texto Spot Corales
   [270, 68, -290], //Posición texto Spot Peces
 ];
