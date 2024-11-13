@@ -1,4 +1,4 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useThree} from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ScarcityLights from "./lights/ScarcityLights";
 import BarrelCactus from "./models/BarrelCactus";
@@ -16,6 +16,8 @@ import PuddleMold from "./models/PuddleMold";
 import Puddle from "./models/Puddle";
 import WoodenSign from "./models/WoodenSign";
 import SignText from "./html/SignText";
+import CameraControls from "./CameraControls";
+import { useEffect } from "react";
 
 const cactusPositions = {
   barrel: [
@@ -90,19 +92,20 @@ const modelsSettings = {
 
 const ScarScene = () => {
   const cameraSettings = {
-    position: [-100, 25, -80],
+    position: [0, 20, 80],
     fov: 60,
     far: 1000,
   };
+
+  // const controlsRef = useRef();
+
   return (
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
+          {/* <CameraControls/> */}
           <SignText/>
-          {/* <mesh position={[0,27,0]}>
-            <boxGeometry args={[25,18,10]}/>
-          </mesh> */}
           <Staging />
           <DesertFloor />
           <WoodenSign/>
