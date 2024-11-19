@@ -18,6 +18,9 @@ import WoodenSign from "./models/WoodenSign";
 import SignText from "./html/SignText";
 import CameraControls from "./CameraControls";
 import { useEffect } from "react";
+import Camel from "./models/Camel";
+import Camel2 from "./models/Camel2";
+import { Physics } from "@react-three/rapier";
 
 const cactusPositions = {
   barrel: [
@@ -107,8 +110,12 @@ const ScarScene = () => {
           {/* <CameraControls/> */}
           <SignText/>
           <Staging />
-          <DesertFloor />
           <WoodenSign/>
+          {/* <Camel/> */}
+          <Physics>
+          <Camel2 scale={20} position={[0, 0, -100]}/>
+          <DesertFloor />
+          </Physics>
           <PuddleMold position={[0, 2, 0]} scale={[10, 4, 10]} />
           <Puddle position={[0, .2, 0]} scale={[10, 1, 10]} />
           <Skeleton scale={1000} position={[140, 1, 5]} />
