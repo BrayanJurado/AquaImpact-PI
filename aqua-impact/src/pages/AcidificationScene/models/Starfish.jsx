@@ -11,21 +11,18 @@ const Starfish = (props) => {
             <mesh
               name="Object_2"
               castShadow
-              receiveShadow
               geometry={nodes.Object_2.geometry}
               material={materials.lambert2SG}
             />
             <mesh
               name="Object_3"
               castShadow
-              receiveShadow
               geometry={nodes.Object_3.geometry}
               material={materials.lambert3SG}
             />
             <mesh
               name="Object_4"
               castShadow
-              receiveShadow
               geometry={nodes.Object_4.geometry}
               material={materials.lambert4SG}
             />

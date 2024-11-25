@@ -26,24 +26,28 @@ const Fishes2 = (props) => {
                   <group name="GLTF_created_0">
                     <primitive object={nodes.GLTF_created_0_rootJoint} />
                     <skinnedMesh
+                      castShadow
                       name="Object_156"
                       geometry={nodes.Object_156.geometry}
                       material={materials.material_0}
                       skeleton={nodes.Object_156.skeleton}
                     />
                     <skinnedMesh
+                      castShadow
                       name="Object_159"
                       geometry={nodes.Object_159.geometry}
                       material={materials.material_1}
                       skeleton={nodes.Object_159.skeleton}
                     />
                     <skinnedMesh
+                      castShadow
                       name="Object_162"
                       geometry={nodes.Object_162.geometry}
                       material={materials.material_2}
                       skeleton={nodes.Object_162.skeleton}
                     />
                     <skinnedMesh
+                      castShadow
                       name="Object_165"
                       geometry={nodes.Object_165.geometry}
                       material={materials.material_3}

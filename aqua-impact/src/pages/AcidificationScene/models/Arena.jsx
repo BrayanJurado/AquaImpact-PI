@@ -18,21 +18,18 @@ const Arena = (props) => {
             position={[i * spacing, 0, j * spacing]} // Posición en la cuadrícula
           >
             <mesh
-              castShadow
               receiveShadow
               geometry={nodes.Object_2.geometry}
               material={materials.material0000}
               scale={[40, 20, 40]} // Ajusta el tamaño de cada bloque
             />
             <mesh
-              castShadow
               receiveShadow
               geometry={nodes.Object_3.geometry}
               material={materials.material0000}
               scale={[40, 20, 40]}
             />
             <mesh
-              castShadow
               receiveShadow
               geometry={nodes.Object_4.geometry}
               material={materials.material0001}
