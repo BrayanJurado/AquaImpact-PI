@@ -8,7 +8,6 @@ const Seaweed = (props) => {
       <group scale={0.01}>
         <mesh
           castShadow
-          receiveShadow
           geometry={nodes.pPlane7_sw02mat_0.geometry}
           material={materials.sw02mat}
           position={[-290.031, -1.851, -45.296]}
