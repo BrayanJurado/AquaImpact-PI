@@ -18,9 +18,9 @@ import WoodenSign from "./models/WoodenSign";
 import SignText from "./html/SignText";
 import CameraControls from "./CameraControls";
 import { useEffect } from "react";
-import Camel from "./models/Camel";
 import Camel2 from "./models/Camel2";
 import { Physics } from "@react-three/rapier";
+import SolutionsText from "./html/SolutionsText";
 
 const cactusPositions = {
   barrel: [
@@ -97,7 +97,6 @@ const ScarScene = () => {
   const cameraSettings = {
     position: [0, 20, 80],
     fov: 60,
-    far: 1000,
   };
 
   // const controlsRef = useRef();
@@ -107,14 +106,15 @@ const ScarScene = () => {
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
-          {/* <CameraControls/> */}
+          <CameraControls/>
+          <SolutionsText/>
           <SignText/>
           <Staging />
           <WoodenSign/>
-          {/* <Camel/> */}
-          <Physics>
-          <Camel2 scale={20} position={[0, 0, -100]}/>
+          <Physics debug>
+          <Camel2 position={[0, 0, -100]}/>
           <DesertFloor />
+          <Tumbleweed position={[0, 70, -105]} />
           </Physics>
           <PuddleMold position={[0, 2, 0]} scale={[10, 4, 10]} />
           <Puddle position={[0, .2, 0]} scale={[10, 1, 10]} />
@@ -167,7 +167,6 @@ const ScarScene = () => {
           {cactusPositions.flowers.map((pos, index) => (
             <CactusFlowers key={`flowers-${index}`} position={pos} />
           ))}
-          <Tumbleweed position={[100, 3, 0]} />
           <ScarcityLights />
         </Canvas>
       </div>
