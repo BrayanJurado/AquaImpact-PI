@@ -9,31 +9,31 @@ const Arena = (props) => {
   const spacing = 60; // Espacio entre copias
 
   return (
-    <group {...props} dispose={null} position={[0, 150, 0]} rotation={[0.233, 0.056, 0.098]}>
+    <group {...props} dispose={null} position={[0, 150, 0]} rotation={[0.233, 0.056, 0.098]} receiveShadow castShadow>
       {/* Crea una cuadrícula de arena */}
       {Array.from({ length: gridSize }).map((_, i) =>
         Array.from({ length: gridSize }).map((_, j) => (
-          <group
+          <group receiveShadow castShadow
             key={`${i}-${j}`}
             position={[i * spacing, 0, j * spacing]} // Posición en la cuadrícula
           >
             <mesh
-              castShadow
               receiveShadow
+              castShadow
               geometry={nodes.Object_2.geometry}
               material={materials.material0000}
               scale={[40, 20, 40]} // Ajusta el tamaño de cada bloque
             />
             <mesh
-              castShadow
               receiveShadow
+              castShadow
               geometry={nodes.Object_3.geometry}
               material={materials.material0000}
               scale={[40, 20, 40]}
             />
             <mesh
-              castShadow
               receiveShadow
+              castShadow
               geometry={nodes.Object_4.geometry}
               material={materials.material0001}
               scale={[40, 20, 40]}

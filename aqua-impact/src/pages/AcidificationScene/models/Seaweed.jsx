@@ -1,11 +1,12 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { MeshStandardMaterial } from 'three'
 
 const Seaweed = (props) => {
   const { nodes, materials } = useGLTF('/models-3d/acidification/Seaweed.glb')
   return (
-    <group {...props} dispose={null}>
-      <group scale={0.01}>
+    <group {...props} dispose={null} castShadow receiveShadow>
+      <group scale={0.01} castShadow receiveShadow >
         <mesh
           castShadow
           receiveShadow
