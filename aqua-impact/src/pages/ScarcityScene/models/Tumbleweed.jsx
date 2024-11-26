@@ -1,9 +1,11 @@
-import { useGLTF } from '@react-three/drei'
+import { useGLTF } from "@react-three/drei";
+import { RigidBody } from "@react-three/rapier";
 
 const Tumbleweed = (props) => {
-    const { nodes, materials } = useGLTF('/models-3d/desert/Tumbleweed.glb')
-    return (
-      <group {...props} dispose={null}  scale={3}>
+  const { nodes, materials } = useGLTF("/models-3d/desert/Tumbleweed.glb");
+  return (
+    <RigidBody colliders="ball">
+      <group {...props} dispose={null} scale={3}>
         <mesh
           castShadow
           receiveShadow
@@ -11,8 +13,9 @@ const Tumbleweed = (props) => {
           material={materials.None}
         />
       </group>
-    )
-}
+    </RigidBody>
+  );
+};
 
-useGLTF.preload('/models-3d/desert/Tumbleweed.glb');
+useGLTF.preload("/models-3d/desert/Tumbleweed.glb");
 export default Tumbleweed;

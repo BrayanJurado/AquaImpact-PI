@@ -43,7 +43,24 @@ function CardSlider() {
   return (
     <div>
       <Navbar />
-      <section className="containerM">
+      <section className="containerM" style={{ position: 'relative' }}>
+        {/* Texto genérico centrado y arriba */}
+        <div 
+          className="generic-text" 
+          style={{ 
+            position: 'absolute', 
+            top: 25, 
+            left: '50%', 
+            transform: 'translateX(-50%)', 
+            textAlign: 'center', 
+            width: '50%', // Ajusta el ancho para que el texto no se extienda por toda la página
+            maxWidth: '900px', // Establece un ancho máximo
+            color: '#e2e2e2', // Cambia el color de la letra
+          }}
+        >
+          <h2 style={{ fontSize: '24px', fontWeight: 'bold' }}>Explora y aprende sobre los problemas del agua</h2>
+          <p style={{ fontSize: '16px' }}>El agua enfrenta graves problemas como la escasez, la contaminación y la acidificación, que afectan a millones de personas y ecosistemas en todo el mundo. Esta página explora cómo estos desafíos están poniendo en peligro este recurso vital y busca crear conciencia sobre la importancia de su conservación.</p>
+        </div>
         {/* Canvas para el modelo 3D de fondo */}
         <Canvas className="background-canvas" style={{ position: 'absolute', top: 0, left: 0, zIndex: -1 }}>
           <ambientLight intensity={0.5} />
@@ -65,6 +82,7 @@ function CardSlider() {
             975: { slidesPerView: 3 },
           }}
           className="card__content"
+          style={{ marginTop: '50px' }}
           onSlideChange={(swiper) => {
             // Cambia el modelo de fondo en función de la tarjeta activa
             const index = swiper.realIndex;

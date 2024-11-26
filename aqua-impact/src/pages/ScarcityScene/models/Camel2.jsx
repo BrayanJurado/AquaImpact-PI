@@ -9,21 +9,34 @@ const Camel2 = (props) => {
   );
   const { actions } = useAnimations(animations, camelRef);
 
-  console.log(actions)
+  console.log(actions);
 
   useEffect(() => {
     actions["Bactrian_Camel_Idle"].play();
     return () => actions["Bactrian_Camel_Idle"].stop();
-  }, [actions])
+  }, [actions]);
+
+  // const SCALE = 20;
 
   return (
-    <RigidBody>
+    <>
+      <RigidBody
+        colliders="cuboid"
+        position={[0, 19, -90]}
+        type="fixed" // Cambia a 'fixed' si el hitbox debe ser estático
+      >
+        <mesh visible={true}>
+          <boxGeometry args={[12, 37, 45]} /> {/* Hitbox cúbico */}
+          <meshBasicMaterial transparent opacity={0} /> {/* Invisible */}
+        </mesh>
+      </RigidBody>
+
       <group ref={camelRef} {...props} dispose={null}>
         <group name="Sketchfab_Scene">
           <group
             name="Sketchfab_model"
             rotation={[-Math.PI / 2, 0, 0]}
-            scale={0.811}
+            scale={18}
           >
             <group name="root">
               <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
@@ -44,7 +57,7 @@ const Camel2 = (props) => {
           </group>
         </group>
       </group>
-    </RigidBody>
+    </>
   );
 };
 
