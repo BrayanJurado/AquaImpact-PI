@@ -11,7 +11,6 @@ import Rain_2 from './AcidificationScene/models/rain_2';
 const CausesAcid = () => {
   const controls = useRef();
 
-
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas shadows camera={{ position: [0, 0, 15], fov: 42 }}>

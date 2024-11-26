@@ -22,83 +22,93 @@ function AcidificationSection() {
       display: 'flex',
       alignItems: 'center',
       padding: '10px 20px',
-      position: 'relative', 
+      position: 'relative',
     },
     contentContainer: {
       position: 'absolute',
-      top: '50%', 
-      left: '50px', 
-      transform: 'translateY(-50%)', 
-      color: '#fff', 
-      textAlign: 'right', 
-      maxWidth: '300px', 
-      lineHeight: '1.5', 
-      padding: '0 20px', 
+      top: '50%',
+      left: '50px',
+      transform: 'translateY(-50%)',
+      color: '#fff',
+      textAlign: 'right',
+      maxWidth: '300px',
+      lineHeight: '1.5',
+      padding: '0 20px',
     },
-    title: {
+    titleContainer: {
       position: 'absolute',
-      bottom: '20px', 
-      left: '20px', 
-      color: '#fff', 
-      fontSize: '1.5rem', 
-      margin: '0', 
+      bottom: '20px',
+      left: '20px',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    titleImage: {
+      width: '70px',
+      height: '70px',
+      marginRight: '10px',
+      cursor: 'pointer', 
+    },
+    titleText: {
+      color: '#fff',
+      fontSize: '1.5rem',
+      marginBottom: '-20px',
     },
     rightContainer: {
       position: 'absolute',
-      top: '50%', 
-      right: '20px', 
-      transform: 'translateY(-50%)', 
-      backgroundColor: '#16284A', 
-      borderRadius: '10px', 
+      top: '50%',
+      right: '20px',
+      transform: 'translateY(-50%)',
+      backgroundColor: '#16284A',
+      borderRadius: '10px',
       padding: '20px',
-      width: '300px', 
-      color: '#fff', 
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', 
-      textAlign: 'left', // Alineado a la izquierda
+      width: '300px',
+      color: '#fff',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      textAlign: 'left',
     },
     sectionTitle: {
-      fontSize: '1rem', // Reducido el tamaño de fuente
+      fontSize: '1rem',
       margin: '0 0 10px 0',
-      textAlign: 'center', // Centrando el título
+      textAlign: 'center',
     },
     separator: {
       height: '2px',
       backgroundColor: '#fff',
-      margin: '10px 0', 
+      margin: '10px 0',
     },
     list: {
       padding: '0',
-      margin: '10px 0', 
-      textAlign: 'left', // Alineado a la izquierda
-      width: '100%', // Ocupa todo el ancho del contenedor
+      margin: '10px 0',
+      textAlign: 'left',
+      width: '100%',
     },
     listItem: {
-      fontSize: '0.9rem', 
-      textAlign: 'left', // Alineado a la izquierda
-      marginBottom: '5px', 
+      fontSize: '0.9rem',
+      textAlign: 'left',
+      marginBottom: '5px',
     },
     button: {
-      backgroundColor: '#3889D7', 
-      color: '#fff', 
+      backgroundColor: '#3889D7',
+      color: '#fff',
       border: 'none',
       borderRadius: '5px',
       padding: '10px 0',
       cursor: 'pointer',
-      width: '100%', 
+      width: '100%',
       textAlign: 'center',
-      transition: 'background-color 0.3s', 
+      transition: 'background-color 0.3s',
     },
     buttonHover: {
-      backgroundColor: '#2A6EB4', 
+      backgroundColor: '#2A6EB4',
     },
     earthModelContainer: {
       position: 'absolute',
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
-      width: '100%', 
-      height: '100%', 
-      pointerEvents: 'none',
+      width: '100vh',
+      height: '100vh',
+      pointerEvents: 'auto',
     },
   };
 
@@ -110,7 +120,7 @@ function AcidificationSection() {
           La acidificación de los océanos, causada por el aumento de CO₂, amenaza la vida marina y los ecosistemas oceánicos. Comprender sus efectos y actuar para mitigarlos es esencial.
         </p>
       </div>
-      <div>
+      <div style={styles.titleContainer}>
         <h2 style={styles.title}>ÍNDICE DE ACIDIFICACIÓN DEL OCÉANO</h2> 
       </div>
       
