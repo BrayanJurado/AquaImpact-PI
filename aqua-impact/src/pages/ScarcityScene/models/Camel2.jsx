@@ -22,7 +22,7 @@ const Camel2 = (props) => {
     <>
       <RigidBody
         colliders="cuboid"
-        position={[0, 19, -90]}
+        position={[0, 19, -28]}
         type="fixed" // Cambia a 'fixed' si el hitbox debe ser estático
       >
         <mesh visible={true}>
@@ -35,7 +35,7 @@ const Camel2 = (props) => {
         <group name="Sketchfab_Scene">
           <group
             name="Sketchfab_model"
-            rotation={[-Math.PI / 2, 0, 0]}
+            rotation={[-Math.PI / 2, 0, Math.PI]}
             scale={18}
           >
             <group name="root">

@@ -38,7 +38,7 @@ const SignText = () => {
         transform
         occlude
         distanceFactor={15}
-        position={[0, 27, 0.2]}
+        position={[0, 27, 50.2]}
       >
         <h1 className="sign-text">{texts[currentIndex]}</h1>
       </Html>
@@ -49,7 +49,7 @@ const SignText = () => {
         maxWidth={30} // Ancho máximo del texto
         lineHeight={1} // Altura de las líneas
         letterSpacing={0.1} // Espaciado entre letras
-        position={[0, 42, 0.2]}
+        position={[0, 42, 50.2]}
       >
         Usa las flechas de tu teclado para seguir leyendo
       </Text>

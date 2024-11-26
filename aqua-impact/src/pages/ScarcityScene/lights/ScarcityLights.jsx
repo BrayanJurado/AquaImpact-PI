@@ -1,11 +1,11 @@
-import { useHelper } from "@react-three/drei";
+// import { useHelper } from "@react-three/drei";
 import { useRef } from "react";
-import { DirectionalLightHelper } from "three";
+// import { DirectionalLightHelper } from "three";
 
 const ScarcityLights = () => {
     const directionalLightRef = useRef();
 
-    useHelper(directionalLightRef, DirectionalLightHelper, 1, "red");
+    // useHelper(directionalLightRef, DirectionalLightHelper, 1, "red");
   
     return (
       <>
