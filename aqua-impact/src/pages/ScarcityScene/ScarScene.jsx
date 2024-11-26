@@ -112,9 +112,9 @@ const ScarScene = () => {
           <Staging />
           <WoodenSign/>
           <Physics debug>
-          <Camel2 position={[0, 0, -100]}/>
-          <DesertFloor />
-          <Tumbleweed position={[0, 70, -105]} />
+            <Camel2 position={[0, 0, -100]}/>
+            <DesertFloor />
+            <Tumbleweed position={[0, 70, -105]} />
           </Physics>
           <PuddleMold position={[0, 2, 0]} scale={[10, 4, 10]} />
           <Puddle position={[0, .2, 0]} scale={[10, 1, 10]} />
