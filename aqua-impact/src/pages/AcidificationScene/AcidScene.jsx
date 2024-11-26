@@ -176,11 +176,11 @@ const AcidScene = () => {
   </div>
 )}
 
-      <Canvas camera={cameraSettings}>
+      <Canvas camera={cameraSettings} shadows>
         <OrbitControls enableZoom={false} enableRotate={true} enableDamping={false} enablePan={false} /> 
-        <ambientLight intensity={0.5}/>
-        <UnderwaterLights/>
-        <UnderwaterStaging />
+        {/* <ambientLight intensity={1.5}/> */}
+        <UnderwaterLights castShadow/>
+        <UnderwaterStaging intensity={0.05}/>
         <Arena />  
 
         {Coral1Settings.map((settings, index) => (
@@ -200,7 +200,7 @@ const AcidScene = () => {
         ))}
 
         {SeaweedSettings.map((settings, index) => (
-          <Seaweed key={`Seaweed-${index}`} position={settings.position} scale={settings.scale}  />
+          <Seaweed key={`Seaweed-${index}`} position={settings.position} scale={settings.scale} castShadow />
         ))}
 
         {WaterplantSettings.map((settings, index) => (
@@ -208,11 +208,11 @@ const AcidScene = () => {
         ))}
 
         {SmallrocksSettings.map((settings, index) => (
-          <Smallrocks key={`Smallrocks-${index}`} position={settings.position} scale={settings.scale}  />
+          <Smallrocks key={`Smallrocks-${index}`} position={settings.position} scale={settings.scale}   />
         ))}
 
         {StarfishSettings.map((settings, index) => (
-          <Starfish key={`Starfish-${index}`} position={settings.position} scale={settings.scale}  />
+          <Starfish key={`Starfish-${index}`} position={settings.position} scale={settings.scale}   />
         ))}
 
         {WaterplantSettings2.map((settings, index) => (

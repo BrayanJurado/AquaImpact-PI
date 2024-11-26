@@ -10,19 +10,19 @@ const Starfish = (props) => {
           <group name="starfishobjcleanermaterialmergergles">
             <mesh
               name="Object_2"
-              castShadow
+              
               geometry={nodes.Object_2.geometry}
               material={materials.lambert2SG}
             />
             <mesh
               name="Object_3"
-              castShadow
+              
               geometry={nodes.Object_3.geometry}
               material={materials.lambert3SG}
             />
             <mesh
               name="Object_4"
-              castShadow
+              
               geometry={nodes.Object_4.geometry}
               material={materials.lambert4SG}
             />
