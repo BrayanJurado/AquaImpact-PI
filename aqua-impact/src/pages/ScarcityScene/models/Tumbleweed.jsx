@@ -3,8 +3,9 @@ import { RigidBody } from "@react-three/rapier";
 
 const Tumbleweed = (props) => {
   const { nodes, materials } = useGLTF("/models-3d/desert/Tumbleweed.glb");
+
   return (
-    <RigidBody colliders="ball">
+    <RigidBody colliders="ball" type="dynamic">
       <group {...props} dispose={null} scale={3}>
         <mesh
           castShadow

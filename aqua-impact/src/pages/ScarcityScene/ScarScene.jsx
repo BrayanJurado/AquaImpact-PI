@@ -1,4 +1,4 @@
-import { Canvas, useThree} from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ScarcityLights from "./lights/ScarcityLights";
 import BarrelCactus from "./models/BarrelCactus";
@@ -21,6 +21,8 @@ import { useEffect } from "react";
 import Camel2 from "./models/Camel2";
 import { Physics } from "@react-three/rapier";
 import SolutionsText from "./html/SolutionsText";
+import LabelTransition from "./models/LabelTransition";
+// import { RigidBody } from "@react-three/rapier";
 
 const cactusPositions = {
   barrel: [
@@ -63,7 +65,6 @@ const treePosition = {
   ],
   branch2: [
     [-60, 5, -30],
-    [-30, 5, 70],
     [-121, 5, 61],
   ],
   branch3: [
@@ -95,7 +96,7 @@ const modelsSettings = {
 
 const ScarScene = () => {
   const cameraSettings = {
-    position: [0, 20, 80],
+    position: [0, 30, 110],
     fov: 60,
   };
 
@@ -106,18 +107,20 @@ const ScarScene = () => {
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
           <OrbitControls />
-          <CameraControls/>
-          <SolutionsText/>
-          <SignText/>
+          <CameraControls />
+          <SolutionsText />
+          <SignText />
           <Staging />
-          <WoodenSign/>
-          <Physics debug>
-            <Camel2 position={[0, 0, -100]}/>
+          <WoodenSign position={[0, 0, 50]} />
+          <LabelTransition targetPosition={[0, 35, -110]} />
+          <Physics>
+            <Camel2 position={[0, 0, -20]} />
             <DesertFloor />
-            <Tumbleweed position={[0, 70, -105]} />
+            <Tumbleweed position={[0, 400, -26]} />
+            <Tumbleweed position={[0, 500, -14]} />
           </Physics>
-          <PuddleMold position={[0, 2, 0]} scale={[10, 4, 10]} />
-          <Puddle position={[0, .2, 0]} scale={[10, 1, 10]} />
+          <PuddleMold position={[0, 2, 50]} scale={[10, 4, 10]} />
+          <Puddle position={[0, 0.2, 50]} scale={[10, 1, 10]} />
           <Skeleton scale={1000} position={[140, 1, 5]} />
           {modelsSettings.DesertBoulder.map((settings, index) => (
             <DesertBoulder
