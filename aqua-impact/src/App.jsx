@@ -12,6 +12,7 @@ import Causes from './pages/causesPol';
 import ContScene from './pages/ContaminationScene/ContScene'; 
 import ScarScene from "./pages/ScarcityScene/ScarScene"; 
 import AcidScene from './pages/AcidificationScene/AcidScene';
+import CausesAcid from "./pages/causesAcid";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/evaluation" element={<EvaluationSection />} />
           <Route path="/indexPollution" element={<IndexPol />} /> 
           <Route path="/causesPollution" element={<Causes />} /> {/* Ruta de Causes */}
+          <Route path="/causesAcid" element={<CausesAcid />} /> 
         </Routes>
       </AuthProvider>
     </Router>

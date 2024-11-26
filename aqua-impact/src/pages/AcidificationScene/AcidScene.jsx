@@ -176,7 +176,7 @@ const AcidScene = () => {
   </div>
 )}
 
-      <Canvas camera={cameraSettings} shadows>
+      <Canvas shadows camera={cameraSettings} >
         <OrbitControls enableZoom={false} enableRotate={true} enableDamping={false} enablePan={false} /> 
         {/* <ambientLight intensity={1.5}/> */}
         <UnderwaterLights castShadow/>

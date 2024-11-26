@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
-import { Canvas } from '@react-three/fiber';
 import AcidEarth from './AcidificationScene/models/AcidEarth';
-import { OrbitControls } from '@react-three/drei';
-import { AmbientLight } from 'three';
+
 
 function AcidificationSection() {
+  const navigate = useNavigate();
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
+
+  const handleButtonClick = () => {
+    navigate("/causesAcid"); 
+  };
+  
   // Definir estilos en los objetos
   const styles = {
     navbarContainer: {
@@ -100,7 +110,10 @@ function AcidificationSection() {
           La acidificación de los océanos, causada por el aumento de CO₂, amenaza la vida marina y los ecosistemas oceánicos. Comprender sus efectos y actuar para mitigarlos es esencial.
         </p>
       </div>
-      <h2 style={styles.title}>ÍNDICE DE ACIDIFICACIÓN DEL OCÉANO</h2> 
+      <div>
+        <h2 style={styles.title}>ÍNDICE DE ACIDIFICACIÓN DEL OCÉANO</h2> 
+      </div>
+      
       <div style={styles.rightContainer}>
         <h2 style={styles.sectionTitle}>REALIDADES ALARMANTES</h2>
         <div style={styles.separator}></div>
@@ -114,8 +127,9 @@ function AcidificationSection() {
           style={styles.button}
           onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor)}
           onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.button.backgroundColor)}
+          onClick={handleButtonClick} 
         >
-          EXPLORAR SOLUCIONES
+          SOLUCIONES
         </button>
       </div>
 
