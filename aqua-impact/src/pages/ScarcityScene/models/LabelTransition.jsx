@@ -36,7 +36,7 @@ const LabelTransition = ({ targetPosition }) => {
         letterSpacing={0.05}
         size={1.2}
       >
-        {`HAZ CLICK PARA \n EXPLORAR LAS SOLUCIONES`}
+        EXPLORA LAS SOLUCIONES
         <meshStandardMaterial color="#205a8e" />
       </Text3D>
     </>

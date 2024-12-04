@@ -1,6 +1,6 @@
-import { Suspense } from "react";
+import { Suspense, useCallback, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, PositionalAudio } from "@react-three/drei";
 import ScarcityLights from "./lights/ScarcityLights";
 import BarrelCactus from "./models/BarrelCactus";
 import DesertFloor from "./models/DesertFloor";
@@ -22,6 +22,7 @@ import { Physics } from "@react-three/rapier";
 import SolutionsText from "./html/SolutionsText";
 import LabelTransition from "./models/LabelTransition";
 import Loader from "./loader/Loader";
+import PostProcessing from "./postProcessing/PostProcessing";
 // import { RigidBody } from "@react-three/rapier";
 
 const cactusPositions = {
@@ -100,12 +101,18 @@ const ScarScene = () => {
     fov: 60,
   };
 
-  // const controlsRef = useRef();
+  const audioRef = useRef();
+
+  const handleAudio = useCallback(() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(2);
+  }, []);
 
   return (
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
-        <Canvas shadows camera={cameraSettings}>
+        <Canvas shadows camera={cameraSettings} onClick={handleAudio}>
+          <PostProcessing/>
           <Suspense fallback={<Loader/>}>
           <OrbitControls enableRotate={false} maxDistance={150} minDistance={120}/>
           <SolutionsText />
@@ -171,6 +178,9 @@ const ScarScene = () => {
             <CactusFlowers key={`flowers-${index}`} position={pos} />
           ))}
           <ScarcityLights />
+          <group>
+            <PositionalAudio ref={audioRef} loop url="/sounds/desertAmbientSound.mp3" distance={20}/>
+          </group>
           </Suspense>
         </Canvas>
       </div>
