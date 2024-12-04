@@ -13,7 +13,7 @@ const Camel2 = (props) => {
 
   useEffect(() => {
     actions["Bactrian_Camel_Idle"].play();
-    return () => actions["Bactrian_Camel_Idle"].stop();
+    //return () => actions["Bactrian_Camel_Idle"].stop();
   }, [actions]);
 
   // const SCALE = 20;
@@ -43,7 +43,7 @@ const Camel2 = (props) => {
                 <group name="Bacreian_Armature_59" scale={0.01}>
                   <group name="GLTF_created_0">
                     <primitive object={nodes.GLTF_created_0_rootJoint} />
-                    <skinnedMesh
+                    <skinnedMesh castShadow
                       name="Object_7"
                       geometry={nodes.Object_7.geometry}
                       material={materials.Bactria_camel_mat}

@@ -1,5 +1,6 @@
-import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { Suspense, useCallback, useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, PositionalAudio } from "@react-three/drei";
 import ScarcityLights from "./lights/ScarcityLights";
 import BarrelCactus from "./models/BarrelCactus";
 import DesertFloor from "./models/DesertFloor";
@@ -16,12 +17,12 @@ import PuddleMold from "./models/PuddleMold";
 import Puddle from "./models/Puddle";
 import WoodenSign from "./models/WoodenSign";
 import SignText from "./html/SignText";
-import CameraControls from "./CameraControls";
-import { useEffect } from "react";
 import Camel2 from "./models/Camel2";
 import { Physics } from "@react-three/rapier";
 import SolutionsText from "./html/SolutionsText";
 import LabelTransition from "./models/LabelTransition";
+import Loader from "./loader/Loader";
+import PostProcessing from "./postProcessing/PostProcessing";
 // import { RigidBody } from "@react-three/rapier";
 
 const cactusPositions = {
@@ -100,14 +101,20 @@ const ScarScene = () => {
     fov: 60,
   };
 
-  // const controlsRef = useRef();
+  const audioRef = useRef();
+
+  const handleAudio = useCallback(() => {
+    audioRef.current.play();
+    audioRef.current.setVolume(2);
+  }, []);
 
   return (
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
-        <Canvas shadows camera={cameraSettings}>
-          <OrbitControls />
-          <CameraControls />
+        <Canvas shadows camera={cameraSettings} onClick={handleAudio}>
+          <PostProcessing/>
+          <Suspense fallback={<Loader/>}>
+          <OrbitControls enableRotate={false} maxDistance={150} minDistance={120}/>
           <SolutionsText />
           <SignText />
           <Staging />
@@ -171,6 +178,10 @@ const ScarScene = () => {
             <CactusFlowers key={`flowers-${index}`} position={pos} />
           ))}
           <ScarcityLights />
+          <group>
+            <PositionalAudio ref={audioRef} loop url="/sounds/desertAmbientSound.mp3" distance={20}/>
+          </group>
+          </Suspense>
         </Canvas>
       </div>
     </>
