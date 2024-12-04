@@ -1,4 +1,5 @@
-import { Canvas, useThree } from "@react-three/fiber";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ScarcityLights from "./lights/ScarcityLights";
 import BarrelCactus from "./models/BarrelCactus";
@@ -16,12 +17,11 @@ import PuddleMold from "./models/PuddleMold";
 import Puddle from "./models/Puddle";
 import WoodenSign from "./models/WoodenSign";
 import SignText from "./html/SignText";
-import CameraControls from "./CameraControls";
-import { useEffect } from "react";
 import Camel2 from "./models/Camel2";
 import { Physics } from "@react-three/rapier";
 import SolutionsText from "./html/SolutionsText";
 import LabelTransition from "./models/LabelTransition";
+import Loader from "./loader/Loader";
 // import { RigidBody } from "@react-three/rapier";
 
 const cactusPositions = {
@@ -106,8 +106,8 @@ const ScarScene = () => {
     <>
       <div style={{ width: "100vw", height: "100vh" }}>
         <Canvas shadows camera={cameraSettings}>
-          <OrbitControls />
-          <CameraControls />
+          <Suspense fallback={<Loader/>}>
+          <OrbitControls enableRotate={false} maxDistance={150} minDistance={120}/>
           <SolutionsText />
           <SignText />
           <Staging />
@@ -171,6 +171,7 @@ const ScarScene = () => {
             <CactusFlowers key={`flowers-${index}`} position={pos} />
           ))}
           <ScarcityLights />
+          </Suspense>
         </Canvas>
       </div>
     </>
