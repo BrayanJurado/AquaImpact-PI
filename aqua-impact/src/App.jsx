@@ -6,7 +6,7 @@ import "./App.css";
 import PollutionSection from './pages/pollutionSection';
 import ScarcitySection from './pages/scarcitySection';
 import AcidificationSection from './pages/acidificationSection';
-import EvaluationSection from './pages/evaluationSection';
+import EvaluationSection from './pages/quizSection/evaluationSection';
 import IndexPol from './pages/indexPol'; 
 import Causes from './pages/causesPol'; 
 import ContScene from './pages/ContaminationScene/ContScene'; 
