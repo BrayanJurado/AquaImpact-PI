@@ -24,8 +24,7 @@ function App() {
           <Route path="/acidScene" element={<AcidScene />} /> 
           <Route path="/login" element={<LoginRegister />} />
           <Route path="/menu" element={<CardSlider />} />
-          <Route path="/" element={<LoginRegister />} />{" "}
-          {/* Ruta por defecto */}
+          <Route path="/" element={<LoginRegister />} />  {/* Ruta por defecto */}
           <Route path="/pollution" element={<PollutionSection />} />
           <Route path="/scarcity" element={<ScarcitySection />} />
           <Route path="/acidification" element={<AcidificationSection />} />
