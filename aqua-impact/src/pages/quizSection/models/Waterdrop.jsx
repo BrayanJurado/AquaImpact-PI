@@ -1,8 +1,10 @@
 import { useGLTF } from '@react-three/drei'
+import { RigidBody } from '@react-three/rapier';
 
-const Waterdrop = (props) => {
+const Waterdrop = ({ position, onRemove, onScore, props }) => {
     const { nodes, materials } = useGLTF('/models-3d/quiz/Waterdrop.glb')
   return (
+    <RigidBody type='dynamic'>
     <group {...props} dispose={null}>
       <mesh
         castShadow
@@ -12,6 +14,7 @@ const Waterdrop = (props) => {
         scale={.2}
       />
     </group>
+    </RigidBody>
   )
 
 }
