@@ -28,9 +28,27 @@ function EvaluationSection() {
   const bucketRef = useRef();
   const goalRef = useRef();
   const dropCounter = useRef(0);
+  const [timeLeft, setTimeLeft] = useState(60); // 60-second timer
+  const [isGameOver, setIsGameOver] = useState(false); // Game over state
 
-  // Spawning drops and bags
+  // Countdown timer logic
   useEffect(() => {
+    if (timeLeft <= 0) {
+      setIsGameOver(true); // End the game when the timer reaches zero
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer); // Cleanup on component unmount
+  }, [timeLeft]);
+
+  // Stop spawning when the game is over
+  useEffect(() => {
+    if (isGameOver) return;
+
     const spawnInterval = setInterval(() => {
       dropCounter.current++;
 
@@ -57,7 +75,7 @@ function EvaluationSection() {
     }, 1500);
 
     return () => clearInterval(spawnInterval);
-  }, []);
+  }, [isGameOver]);
 
   // Keyboard movement for the bucket
   useEffect(() => {
@@ -150,35 +168,37 @@ function EvaluationSection() {
           camera={cameraSettings}
         >
           <Text
-          // occlude
-          // fontSize={1} // Tamaño del texto
-          color="orange" // Color del texto
-          // maxWidth={30} // Ancho máximo del texto
-          // lineHeight={1} // Altura de las líneas
-          // letterSpacing={0.1} // Espaciado entre letras
-           position={[0, 8, 0]}
+            // occlude
+            // fontSize={1} // Tamaño del texto
+            color="orange" // Color del texto
+            // maxWidth={30} // Ancho máximo del texto
+            // lineHeight={1} // Altura de las líneas
+            // letterSpacing={0.1} // Espaciado entre letras
+            position={[0, 8, 0]}
           >
-          Score: {score}
+            Score: {score}
           </Text>
           <QuizLights />
-          <QuizStaging/>
+          <QuizStaging />
           <Physics>
-            {waterDrops.map((drop) => (
-              <Waterdrop
-                key={drop.id}
-                position={drop.position}
-                onRemove={() => removeObject("drop", drop.id)}
-                onScore={(points) => setScore((prev) => prev + points)}
-              />
-            ))}
-            {trashBags.map((bag) => (
-              <TrashBag
-                key={bag.id}
-                position={bag.position}
-                onRemove={() => removeObject("bag", bag.id)}
-                onScore={(points) => setScore((prev) => prev + points)}
-              />
-            ))}
+            {!isGameOver &&
+              waterDrops.map((drop) => (
+                <Waterdrop
+                  key={drop.id}
+                  position={drop.position}
+                  onRemove={() => removeObject("drop", drop.id)}
+                  onScore={(points) => setScore((prev) => prev + points)}
+                />
+              ))}
+            {!isGameOver &&
+              trashBags.map((bag) => (
+                <TrashBag
+                  key={bag.id}
+                  position={bag.position}
+                  onRemove={() => removeObject("bag", bag.id)}
+                  onScore={(points) => setScore((prev) => prev + points)}
+                />
+              ))}
             <Bucket ref={bucketRef} position={[0, 1.5, 0]} />
             <RigidBody name="ground">
               <mesh rotation={[-Math.PI / 2, 0, 0]}>
@@ -187,14 +207,46 @@ function EvaluationSection() {
               </mesh>
             </RigidBody>
             <RigidBody name="goal" ref={goalRef} mass={10}>
-                <mesh position={[0, 2, 0]}>
-                  <boxGeometry args={[1.2,2,1.2]}/>
-                  <meshStandardMaterial color="cyan" />
-                </mesh>
+              <mesh position={[0, 2, 0]}>
+                <boxGeometry args={[1.2, 2, 1.2]} />
+                <meshStandardMaterial color="cyan" />
+              </mesh>
             </RigidBody>
           </Physics>
-          <OrbitControls enablePan={false} enableRotate={false} enableZoom={false}/>
+          <OrbitControls
+            enablePan={false}
+            enableRotate={false}
+            enableZoom={false}
+          />
         </Canvas>
+        {isGameOver && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "white",
+              backgroundColor: "black",
+              padding: "20px",
+              borderRadius: "10px",
+              textAlign: "center",
+            }}
+          >
+            <h1>Congratulations!</h1>
+            <p>Your Score: {score}</p>
+            <button
+              style={{
+                marginTop: "10px",
+                padding: "10px 20px",
+                fontSize: "16px",
+              }}
+              onClick={() => window.location.reload()} // Restart the game
+            >
+              Play Again
+            </button>
+          </div>
+        )}
         <Navbar />
         <section className="section-container"></section>
       </div>
