@@ -33,7 +33,7 @@ function EvaluationSection() {
   const bucketRef = useRef();
   const goalRef = useRef();
   const dropCounter = useRef(0);
-  const [timeLeft, setTimeLeft] = useState(70); // 60-second timer
+  const [timeLeft, setTimeLeft] = useState(70); // 80-second timer
   const [isGameOver, setIsGameOver] = useState(false); // Game over state
 
   // Countdown timer logic
