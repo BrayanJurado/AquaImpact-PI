@@ -8,6 +8,11 @@ import TrashBag from "./models/TrashBag";
 import Bucket from "./models/Bucket";
 import { Physics, RigidBody } from "@react-three/rapier";
 import QuizStaging from "./staging/QuizStaging";
+import ironMedal from "../../assets/images/medals/iron_medal.png";
+import bronzeMedal from "../../assets/images/medals/bronze_medal.png";
+import silverMedal from "../../assets/images/medals/silver_medal.png";
+import goldMedal from "../../assets/images/medals/gold_medal.png";
+import diamondMedal from "../../assets/images/medals/diamond_medal.png";
 
 const getRandomPosition = (rangeX, fixedZ, height) => {
   return [
@@ -161,11 +166,11 @@ function EvaluationSection() {
 
   // Medal image mapping
 const medalImages = {
-  "Iron Medal": "/medals/iron_medal.png",
-  "Bronze Medal": "/medals/bronze_medal.png",
-  "Silver Medal": "/medals/silver_medal.png",
-  "Gold Medal": "/medals/gold_medal.png",
-  "Diamond Medal": "/medals/diamond_medal.png",
+  "Iron Medal": ironMedal,
+  "Bronze Medal": bronzeMedal,
+  "Silver Medal": silverMedal,
+  "Gold Medal": goldMedal,
+  "Diamond Medal": diamondMedal,
 };
 
 // Function to determine the medal based on the score
