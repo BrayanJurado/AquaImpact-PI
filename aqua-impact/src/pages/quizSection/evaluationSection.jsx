@@ -54,7 +54,7 @@ function EvaluationSection() {
         ]);
         dropCounter.current = 0;
       }
-    }, 3000);
+    }, 1500);
 
     return () => clearInterval(spawnInterval);
   }, []);
@@ -162,7 +162,7 @@ function EvaluationSection() {
           </Text>
           <QuizLights />
           <QuizStaging/>
-          <Physics debug>
+          <Physics>
             {waterDrops.map((drop) => (
               <Waterdrop
                 key={drop.id}
@@ -193,7 +193,7 @@ function EvaluationSection() {
                 </mesh>
             </RigidBody>
           </Physics>
-          <OrbitControls enablePan={false} enableRotate={true} />
+          <OrbitControls enablePan={false} enableRotate={false} enableZoom={false}/>
         </Canvas>
         <Navbar />
         <section className="section-container"></section>
