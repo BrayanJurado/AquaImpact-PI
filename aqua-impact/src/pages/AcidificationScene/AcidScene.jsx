@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
 
@@ -16,6 +16,9 @@ import Waterplant from './models/Waterplant';
 import leftClickImage from "../../assets/images/click.png";
 import buttonsImage from "../../assets/images/teclas.png";
 import Seaweed from './models/Seaweed';
+import UnderwaterSound from "../../../public/sounds/underwater.mp3";
+import PostProcessing from "./postProcessing/PostProcessing";
+import Loader from "./loader/Loader";
 
 // Implementacion de mouse para vista:
 
@@ -124,6 +127,17 @@ const AcidScene = () => {
   const [showModal, setShowModal] = useState(true); 
 
   useEffect(() => {
+    const audio = new Audio(UnderwaterSound);
+    audio.loop = true; // Para que el audio se repita automáticamente
+    audio.play();
+
+    return () => {
+      audio.pause();
+      audio.currentTime = 0; // Resetea el audio al desmontar el componente
+    };
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight" || event.key === "ArrowUp") {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % labelsPositions.length);
@@ -177,6 +191,8 @@ const AcidScene = () => {
 )}
 
       <Canvas shadows camera={cameraSettings} >
+        <PostProcessing/>
+        <Suspense fallback={<Loader/>}>
         <OrbitControls enableZoom={false} enableRotate={true} enableDamping={false} enablePan={false} /> 
         {/* <ambientLight intensity={1.5}/> */}
         <UnderwaterLights castShadow/>
@@ -240,6 +256,7 @@ const AcidScene = () => {
         </Html>
 
         <CameraControl currentIndex={currentIndex} />
+        </Suspense>
       </Canvas>
     </div>
   );
