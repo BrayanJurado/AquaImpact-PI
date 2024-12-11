@@ -159,14 +159,23 @@ function EvaluationSection() {
     }
   };
 
-  // Determine the medal based on the score
-  const getMedal = () => {
-    if (score < 1000) return "Medalla de hierro";
-    if (score < 2000) return "Medalla de bronce";
-    if (score < 3000) return "Medalla de plata";
-    if (score < 4000) return "Medalla de oro";
-    return "Medalla de diamante";
-  };
+  // Medal image mapping
+const medalImages = {
+  "Iron Medal": "/medals/iron_medal.png",
+  "Bronze Medal": "/medals/bronze_medal.png",
+  "Silver Medal": "/medals/silver_medal.png",
+  "Gold Medal": "/medals/gold_medal.png",
+  "Diamond Medal": "/medals/diamond_medal.png",
+};
+
+// Function to determine the medal based on the score
+const getMedal = (score) => {
+  if (score < 1000) return "Iron Medal";
+  if (score < 2000) return "Bronze Medal";
+  if (score < 3000) return "Silver Medal";
+  if (score < 4000) return "Gold Medal";
+  return "Diamond Medal";
+};
 
   return (
     <>
@@ -236,25 +245,51 @@ function EvaluationSection() {
               left: "50%",
               transform: "translate(-50%, -50%)",
               color: "white",
-              backgroundColor: "black",
-              padding: "20px",
-              borderRadius: "10px",
+              backgroundColor: "#175b9a",
+              padding: "30px",
+              borderRadius: "15px",
               textAlign: "center",
               zIndex: 10,
+              boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
             }}
           >
             <h1>Felicitaciones!</h1>
             <p>Tu puntaje: {score}</p>
-            <p>Ganaste una {getMedal()}!</p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <p style={{ margin: 0 }}>Ganaste una {getMedal(score)}!</p>
+              <img
+                src={medalImages[getMedal(score)]} // Get the medal image dynamically
+                alt={getMedal(score)}
+                style={{
+                  marginLeft: "10px",
+                  width: "50px",
+                  height: "50px",
+                }}
+              />
+            </div>
             <button
               style={{
-                marginTop: "10px",
+                marginTop: "20px",
                 padding: "10px 20px",
-                fontSize: "16px",
+                fontSize: "18px",
+                color: "white",
+                backgroundColor: "orange",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+                transition: "transform 0.2s, background-color 0.2s",
               }}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "darkorange")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "orange")}
               onClick={() => window.location.reload()} // Restart the game
             >
-              Jugar otra vez
+              Jugar de nuevo
             </button>
           </div>
         )}
