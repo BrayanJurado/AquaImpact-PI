@@ -28,7 +28,7 @@ function EvaluationSection() {
   const bucketRef = useRef();
   const goalRef = useRef();
   const dropCounter = useRef(0);
-  const [timeLeft, setTimeLeft] = useState(60); // 60-second timer
+  const [timeLeft, setTimeLeft] = useState(70); // 60-second timer
   const [isGameOver, setIsGameOver] = useState(false); // Game over state
 
   // Countdown timer logic
@@ -159,6 +159,15 @@ function EvaluationSection() {
     }
   };
 
+  // Determine the medal based on the score
+  const getMedal = () => {
+    if (score < 1000) return "Medalla de hierro";
+    if (score < 2000) return "Medalla de bronce";
+    if (score < 3000) return "Medalla de plata";
+    if (score < 4000) return "Medalla de oro";
+    return "Medalla de diamante";
+  };
+
   return (
     <>
       <div>
@@ -176,7 +185,7 @@ function EvaluationSection() {
             // letterSpacing={0.1} // Espaciado entre letras
             position={[0, 8, 0]}
           >
-            Score: {score}
+            Puntaje: {score}, Tiempo restante: {timeLeft}
           </Text>
           <QuizLights />
           <QuizStaging />
@@ -231,10 +240,12 @@ function EvaluationSection() {
               padding: "20px",
               borderRadius: "10px",
               textAlign: "center",
+              zIndex: 10,
             }}
           >
-            <h1>Congratulations!</h1>
-            <p>Your Score: {score}</p>
+            <h1>Felicitaciones!</h1>
+            <p>Tu puntaje: {score}</p>
+            <p>Ganaste una {getMedal()}!</p>
             <button
               style={{
                 marginTop: "10px",
@@ -243,7 +254,7 @@ function EvaluationSection() {
               }}
               onClick={() => window.location.reload()} // Restart the game
             >
-              Play Again
+              Jugar otra vez
             </button>
           </div>
         )}
