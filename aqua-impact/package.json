@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-jvectormap/core": "^1.0.4",
     "@react-jvectormap/world": "^1.1.2",
+    "@react-three/a11y": "^3.0.0",
     "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
     "@react-three/postprocessing": "^2.16.3",

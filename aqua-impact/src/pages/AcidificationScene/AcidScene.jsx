@@ -1,6 +1,8 @@
 import { Suspense, useState, useEffect } from 'react';
 import { Canvas, useThree } from "@react-three/fiber";
 import { OrbitControls, Html } from "@react-three/drei";
+import { A11y, A11yAnnouncer } from '@react-three/a11y';
+
 
 import UnderwaterLights from './lights/UnderwaterLigths';
 import Waterplant2 from './models/Waterplant2';
@@ -191,6 +193,8 @@ const AcidScene = () => {
 )}
 
       <Canvas shadows camera={cameraSettings} >
+      
+
         <PostProcessing/>
         <Suspense fallback={<Loader/>}>
         <OrbitControls enableZoom={false} enableRotate={true} enableDamping={false} enablePan={false} /> 
@@ -200,20 +204,49 @@ const AcidScene = () => {
         <Arena />  
 
         {Coral1Settings.map((settings, index) => (
-          <Coral1 key={`Coral-${index}`} position={settings.position} scale={settings.scale} />
-        ))}
+            <A11y
+              key={`Coral-${index}`}
+              role="content"
+              description={`Coral en posición ${settings.position.join(', ')} afectado por acidificación`}
+              tabIndex={0}
+            >
+              <Coral1 position={settings.position} scale={settings.scale} />
+            </A11y>
+          ))}
 
         {Coral2Settings.map((settings, index) => (
-          <Coral2 key={`Coral-${index}`} position={settings.position} scale={settings.scale} />
-        ))}
+            <A11y
+              key={`Coral-${index}`}
+              role="region"
+              description={`Coral en posición ${settings.position.join(', ')} afectado por acidificación`}
+              tabIndex={0}
+            >
+              <Coral2 position={settings.position} scale={settings.scale} />
+            </A11y>
+          ))}
 
+        
         {FishesSettings.map((settings, index) => (
-          <Fishes key={`Fishes-${index}`} position={settings.position} scale={settings.scale}  />
-        ))}
+            <A11y
+              key={`Fishes-${index}`}
+              role="region"
+              description={`Peces de coral en movimiento`}
+              tabIndex={0}
+            >
+              <Fishes position={settings.position} scale={settings.scale} />
+            </A11y>
+          ))}
 
         {FishesSettings2.map((settings, index) => (
-          <Fishes2 key={`Fishes-${index}`} position={settings.position} scale={settings.scale}  />
-        ))}
+            <A11y
+              key={`Fishes-${index}`}
+              role="region"
+              description={`Peces de coral en movimiento`}
+              tabIndex={0}
+            >
+              <Fishes2 position={settings.position} scale={settings.scale} />
+            </A11y>
+          ))}
 
         {SeaweedSettings.map((settings, index) => (
           <Seaweed key={`Seaweed-${index}`} position={settings.position} scale={settings.scale} castShadow />
@@ -254,7 +287,7 @@ const AcidScene = () => {
             </p>
           </div>
         </Html>
-
+        
         <CameraControl currentIndex={currentIndex} />
         </Suspense>
       </Canvas>
