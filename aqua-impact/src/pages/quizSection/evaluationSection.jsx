@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Text } from "@react-three/drei";
 import { useState, useEffect, useRef } from "react";
 import { Navbar } from "../../components/Navbar";
 import { Canvas } from "@react-three/fiber";
@@ -7,6 +7,7 @@ import Waterdrop from "./models/Waterdrop";
 import TrashBag from "./models/TrashBag";
 import Bucket from "./models/Bucket";
 import { Physics, RigidBody } from "@react-three/rapier";
+import QuizStaging from "./staging/QuizStaging";
 
 const getRandomPosition = (rangeX, fixedZ, height) => {
   return [
@@ -18,7 +19,7 @@ const getRandomPosition = (rangeX, fixedZ, height) => {
 
 function EvaluationSection() {
   const cameraSettings = {
-    position: [0, 1.5, 15],
+    position: [0, 5, 15],
   };
 
   const [score, setScore] = useState(0); // Score state
@@ -143,23 +144,24 @@ function EvaluationSection() {
   return (
     <>
       <div>
-        <div
-          style={{
-            position: "absolute",
-            top: 20,
-            left: 700,
-            fontSize: "24px",
-            color: "white",
-          }}
-        >
-          Score: {score}
-        </div>
         <Canvas
           style={{ position: "absolute", top: 0, left: 0 }}
           shadows
           camera={cameraSettings}
         >
+          <Text
+          // occlude
+          // fontSize={1} // Tamaño del texto
+          color="orange" // Color del texto
+          // maxWidth={30} // Ancho máximo del texto
+          // lineHeight={1} // Altura de las líneas
+          // letterSpacing={0.1} // Espaciado entre letras
+           position={[0, 8, 0]}
+          >
+          Score: {score}
+          </Text>
           <QuizLights />
+          <QuizStaging/>
           <Physics debug>
             {waterDrops.map((drop) => (
               <Waterdrop
@@ -180,14 +182,14 @@ function EvaluationSection() {
             <Bucket ref={bucketRef} position={[0, 1.5, 0]} />
             <RigidBody name="ground">
               <mesh rotation={[-Math.PI / 2, 0, 0]}>
-                <planeGeometry args={[25, 25]} />
-                <meshStandardMaterial color="white" />
+                <planeGeometry args={[75, 75]} />
+                <meshStandardMaterial color="yellow" />
               </mesh>
             </RigidBody>
-            <RigidBody name="goal" ref={goalRef}>
+            <RigidBody name="goal" ref={goalRef} mass={10}>
                 <mesh position={[0, 2, 0]}>
-                  <boxGeometry args={[1.1,2,1.1]}/>
-                  <meshStandardMaterial />
+                  <boxGeometry args={[1.2,2,1.2]}/>
+                  <meshStandardMaterial color="cyan" />
                 </mesh>
             </RigidBody>
           </Physics>
