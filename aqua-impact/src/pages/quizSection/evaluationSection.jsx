@@ -21,12 +21,14 @@ function EvaluationSection() {
     position: [0, 1.5, 15],
   };
 
+  const [score, setScore] = useState(0); // Score state
   const [waterDrops, setWaterDrops] = useState([]);
   const [trashBags, setTrashBags] = useState([]);
   const bucketRef = useRef();
-  const dropCounter = useRef(0); // Counter to track when to spawn a trash bag
+  const goalRef = useRef();
+  const dropCounter = useRef(0);
 
-  // Spawning drops and bags with a 1:5 ratio
+  // Spawning drops and bags
   useEffect(() => {
     const spawnInterval = setInterval(() => {
       dropCounter.current++;
@@ -34,29 +36,35 @@ function EvaluationSection() {
       // Spawn a waterdrop
       setWaterDrops((prev) => [
         ...prev,
-        { id: Math.random(), position: getRandomPosition(10, 0, 10) },
+        {
+          id: Math.random(),
+          position: getRandomPosition(10, 0, 10),
+        },
       ]);
 
       // Spawn a trash bag after every 5 drops
       if (dropCounter.current >= 5) {
         setTrashBags((prev) => [
           ...prev,
-          { id: Math.random(), position: getRandomPosition(10, 0, 10) },
+          {
+            id: Math.random(),
+            position: getRandomPosition(10, 0, 10),
+          },
         ]);
-        dropCounter.current = 0; // Reset the counter
+        dropCounter.current = 0;
       }
-    }, 5000); // Spawn every second
+    }, 3000);
 
     return () => clearInterval(spawnInterval);
   }, []);
 
-  // Bucket movement with arrow keys
+  // Keyboard movement for the bucket
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (!bucketRef.current) return;
 
-      const currentPosition = bucketRef.current.translation(); // Get the current position
-      const step = .5; // Step size for movement
+      const currentPosition = bucketRef.current.translation(); // Get the bucket's current position
+      const step = 1; // Step size for movement
       const limit = 10; // Limit for movement along the x-axis
 
       if (event.key === "ArrowRight") {
@@ -87,34 +95,108 @@ function EvaluationSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!goalRef.current) return;
+
+      const currentPosition = goalRef.current.translation(); // Get the bucket's current position
+      const step = 1; // Step size for movement
+      const limit = 10; // Limit for movement along the x-axis
+
+      if (event.key === "ArrowRight") {
+        // Move bucket right
+        const newX = Math.min(currentPosition.x + step, limit);
+        goalRef.current.setTranslation({
+          x: newX,
+          y: currentPosition.y,
+          z: currentPosition.z,
+        });
+      }
+
+      if (event.key === "ArrowLeft") {
+        // Move bucket left
+        const newX = Math.max(currentPosition.x - step, -limit);
+        goalRef.current.setTranslation({
+          x: newX,
+          y: currentPosition.y,
+          z: currentPosition.z,
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  // Remove waterdrop or trash bag from state
+  const removeObject = (type, id) => {
+    if (type === "drop") {
+      setWaterDrops((prev) => prev.filter((drop) => drop.id !== id));
+    } else if (type === "bag") {
+      setTrashBags((prev) => prev.filter((bag) => bag.id !== id));
+    }
+  };
+
   return (
-    <div>
-      <Canvas
-        style={{ position: "absolute", top: 0, left: 0 }}
-        shadows
-        camera={cameraSettings}
-      >
-        <QuizLights />
-        <Physics>
-          {waterDrops.map((drop) => (
-            <Waterdrop key={drop.id} position={drop.position} />
-          ))}
-          {trashBags.map((bag) => (
-            <TrashBag key={bag.id} position={bag.position} />
-          ))}
-          <Bucket ref={bucketRef} position={[0, 0, 0]} />
-          <RigidBody>
-            <mesh rotation={[-Math.PI / 2, 0, 0]}>
-              <planeGeometry args={[25, 25]} />
-              <meshStandardMaterial color="white" />
-            </mesh>
-          </RigidBody>
-        </Physics>
-        <OrbitControls enablePan={false} enableRotate={true} />
-      </Canvas>
-      <Navbar />
-      <section className="section-container"></section>
-    </div>
+    <>
+      <div>
+        <div
+          style={{
+            position: "absolute",
+            top: 20,
+            left: 700,
+            fontSize: "24px",
+            color: "white",
+          }}
+        >
+          Score: {score}
+        </div>
+        <Canvas
+          style={{ position: "absolute", top: 0, left: 0 }}
+          shadows
+          camera={cameraSettings}
+        >
+          <QuizLights />
+          <Physics debug>
+            {waterDrops.map((drop) => (
+              <Waterdrop
+                key={drop.id}
+                position={drop.position}
+                onRemove={() => removeObject("drop", drop.id)}
+                onScore={(points) => setScore((prev) => prev + points)}
+              />
+            ))}
+            {trashBags.map((bag) => (
+              <TrashBag
+                key={bag.id}
+                position={bag.position}
+                onRemove={() => removeObject("bag", bag.id)}
+                onScore={(points) => setScore((prev) => prev + points)}
+              />
+            ))}
+            <Bucket ref={bucketRef} position={[0, 1.5, 0]} />
+            <RigidBody name="ground">
+              <mesh rotation={[-Math.PI / 2, 0, 0]}>
+                <planeGeometry args={[25, 25]} />
+                <meshStandardMaterial color="white" />
+              </mesh>
+            </RigidBody>
+            <RigidBody name="goal" ref={goalRef}>
+                <mesh position={[0, 2, 0]}>
+                  <boxGeometry args={[1.1,2,1.1]}/>
+                  <meshStandardMaterial />
+                </mesh>
+            </RigidBody>
+          </Physics>
+          <OrbitControls enablePan={false} enableRotate={true} />
+        </Canvas>
+        <Navbar />
+        <section className="section-container"></section>
+      </div>
+    </>
   );
 }
 
