@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDx_1721OMqry7gbVC9Bn0dNb-O9A3HpzU",
-  authDomain: "aquaimpact-project.firebaseapp.com",
-  projectId: "aquaimpact-project",
-  storageBucket: "aquaimpact-project.appspot.com",
-  messagingSenderId: "489116423060",
-  appId: "1:489116423060:web:06ecdf40e0cd3ad455b581"
+  apiKey: "AIzaSyA2Aez64h2bhBlAwcXKhpxuiAJV3i0Z7-g",
+  authDomain: "aqua-impact.firebaseapp.com",
+  projectId: "aqua-impact",
+  storageBucket: "aqua-impact.firebasestorage.app",
+  messagingSenderId: "910193186896",
+  appId: "1:910193186896:web:11ca63518b18b40a055955"
 };
 
 // Initialize Firebase
